@@ -1,0 +1,2121 @@
+[
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x17",
+        "index10": 23,
+        "des": "微笑",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0017"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x28",
+        "index10": 40,
+        "des": "撇嘴",
+        "packName": "QQ经典",
+        "magicStr": "\u0014("
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x13",
+        "index10": 19,
+        "des": "色",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0013"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x2b",
+        "index10": 43,
+        "des": "发呆",
+        "packName": "QQ经典",
+        "magicStr": "\u0014+"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x15",
+        "index10": 21,
+        "des": "得意",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0015"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x9",
+        "index10": 9,
+        "des": "流泪",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\t"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x14",
+        "index10": 20,
+        "des": "害羞",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x6a",
+        "index10": 106,
+        "des": "闭嘴",
+        "packName": "QQ经典",
+        "magicStr": "\u0014j"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x23",
+        "index10": 35,
+        "des": "睡",
+        "packName": "QQ经典",
+        "magicStr": "\u0014#"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0xba",
+        "index10": 186,
+        "des": "大哭",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ú"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x19",
+        "index10": 25,
+        "des": "尴尬",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0019"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x18",
+        "index10": 24,
+        "des": "发怒",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0018"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x1",
+        "index10": 1,
+        "des": "调皮",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0001"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x0",
+        "index10": 0,
+        "des": "呲牙",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0000"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x21",
+        "index10": 33,
+        "des": "惊讶",
+        "packName": "QQ经典",
+        "magicStr": "\u0014!"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x20",
+        "index10": 32,
+        "des": "难过",
+        "packName": "QQ经典",
+        "magicStr": "\u0014 "
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0xc",
+        "index10": 12,
+        "des": "酷",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\f"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x1b",
+        "index10": 27,
+        "des": "冷汗",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u001b"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0xd",
+        "index10": 13,
+        "des": "抓狂",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\r"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x16",
+        "index10": 22,
+        "des": "吐",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0016"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x3",
+        "index10": 3,
+        "des": "偷笑",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0003"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x12",
+        "index10": 18,
+        "des": "可爱",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0012"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x1e",
+        "index10": 30,
+        "des": "白眼",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u001e"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x1f",
+        "index10": 31,
+        "des": "傲慢",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u001f"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x51",
+        "index10": 81,
+        "des": "饥饿",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Q"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x52",
+        "index10": 82,
+        "des": "困",
+        "packName": "QQ经典",
+        "magicStr": "\u0014R"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x1a",
+        "index10": 26,
+        "des": "惊恐",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u001a"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x2",
+        "index10": 2,
+        "des": "流汗",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0002"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x25",
+        "index10": 37,
+        "des": "憨笑",
+        "packName": "QQ经典",
+        "magicStr": "\u0014%"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x32",
+        "index10": 50,
+        "des": "大兵",
+        "nDes": "悠闲",
+        "packName": "QQ经典",
+        "magicStr": "\u00142"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x2a",
+        "index10": 42,
+        "des": "奋斗",
+        "packName": "QQ经典",
+        "magicStr": "\u0014*"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x53",
+        "index10": 83,
+        "des": "咒骂",
+        "packName": "QQ经典",
+        "magicStr": "\u0014S"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x22",
+        "index10": 34,
+        "des": "疑问",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\""
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0xb",
+        "index10": 11,
+        "des": "嘘",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u000b"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x31",
+        "index10": 49,
+        "des": "晕",
+        "packName": "QQ经典",
+        "magicStr": "\u00141"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x54",
+        "index10": 84,
+        "des": "折磨",
+        "packName": "QQ经典",
+        "magicStr": "\u0014T"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x27",
+        "index10": 39,
+        "des": "衰",
+        "packName": "QQ经典",
+        "magicStr": "\u0014'"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x4e",
+        "index10": 78,
+        "des": "骷髅",
+        "packName": "QQ经典",
+        "magicStr": "\u0014N"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x5",
+        "index10": 5,
+        "des": "敲打",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0005"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x4",
+        "index10": 4,
+        "des": "再见",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0004"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x6",
+        "index10": 6,
+        "des": "擦汗",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0006"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x55",
+        "index10": 85,
+        "des": "抠鼻",
+        "packName": "QQ经典",
+        "magicStr": "\u0014U"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x56",
+        "index10": 86,
+        "des": "鼓掌",
+        "packName": "QQ经典",
+        "magicStr": "\u0014V"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x57",
+        "index10": 87,
+        "des": "糗大了",
+        "packName": "QQ经典",
+        "magicStr": "\u0014W"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x2e",
+        "index10": 46,
+        "des": "坏笑",
+        "packName": "QQ经典",
+        "magicStr": "\u0014."
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x58",
+        "index10": 88,
+        "des": "左哼哼",
+        "packName": "QQ经典",
+        "magicStr": "\u0014X"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x2c",
+        "index10": 44,
+        "des": "右哼哼",
+        "packName": "QQ经典",
+        "magicStr": "\u0014,"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x59",
+        "index10": 89,
+        "des": "哈欠",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Y"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x30",
+        "index10": 48,
+        "des": "鄙视",
+        "packName": "QQ经典",
+        "magicStr": "\u00140"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0xe",
+        "index10": 14,
+        "des": "委屈",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u000e"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x5a",
+        "index10": 90,
+        "des": "快哭了",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Z"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x29",
+        "index10": 41,
+        "des": "阴险",
+        "packName": "QQ经典",
+        "magicStr": "\u0014)"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xb1",
+        "index10": 177,
+        "des": "右亲亲",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ı"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x24",
+        "index10": 36,
+        "des": "亲亲",
+        "packName": "QQ经典",
+        "magicStr": "\u0014$"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x33",
+        "index10": 51,
+        "des": "可怜",
+        "packName": "QQ经典",
+        "magicStr": "\u00143"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xa4",
+        "index10": 164,
+        "des": "眨眼睛",
+        "packName": "QQ经典",
+        "magicStr": "\u0014¤"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xae",
+        "index10": 174,
+        "des": "笑哭",
+        "packName": "QQ经典",
+        "magicStr": "\u0014®"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xab",
+        "index10": 171,
+        "des": "doge",
+        "packName": "QQ经典",
+        "magicStr": "\u0014«"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xa5",
+        "index10": 165,
+        "des": "泪奔",
+        "packName": "QQ经典",
+        "magicStr": "\u0014¥"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xa6",
+        "index10": 166,
+        "des": "无奈",
+        "packName": "QQ经典",
+        "magicStr": "\u0014¦"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xa1",
+        "index10": 161,
+        "des": "托腮",
+        "packName": "QQ经典",
+        "magicStr": "\u0014¡"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xa7",
+        "index10": 167,
+        "des": "卖萌",
+        "packName": "QQ经典",
+        "magicStr": "\u0014§"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xaa",
+        "index10": 170,
+        "des": "斜眼笑",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ª"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xa9",
+        "index10": 169,
+        "des": "喷血",
+        "packName": "QQ经典",
+        "magicStr": "\u0014©"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xac",
+        "index10": 172,
+        "des": "惊喜",
+        "packName": "QQ经典",
+        "magicStr": "\u0014¬"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xad",
+        "index10": 173,
+        "des": "骚扰",
+        "packName": "QQ经典",
+        "magicStr": "\u0014­"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xa8",
+        "index10": 168,
+        "des": "小纠结",
+        "packName": "QQ经典",
+        "magicStr": "\u0014¨"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xaf",
+        "index10": 175,
+        "des": "我最美",
+        "packName": "QQ经典",
+        "magicStr": "\u0014¯"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x99",
+        "index10": 153,
+        "des": "加油必胜",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ù"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x9a",
+        "index10": 154,
+        "des": "加油抱抱",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ú"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x9b",
+        "index10": 155,
+        "des": "口罩护体",
+        "ext": "png",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Û"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x84",
+        "index10": 132,
+        "des": "搬砖中",
+        "ext": "png",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ą"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x85",
+        "index10": 133,
+        "des": "忙到飞起",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ą"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x86",
+        "index10": 134,
+        "des": "脑阔疼",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ć"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x87",
+        "index10": 135,
+        "des": "沧桑",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ć"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x88",
+        "index10": 136,
+        "des": "捂脸",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ĉ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x89",
+        "index10": 137,
+        "des": "辣眼睛",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ĉ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x8a",
+        "index10": 138,
+        "des": "哦哟",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ċ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x8b",
+        "index10": 139,
+        "des": "头秃",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ċ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x8c",
+        "index10": 140,
+        "des": "问号脸",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Č"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x8d",
+        "index10": 141,
+        "des": "暗中观察",
+        "packName": "QQ经典",
+        "magicStr": "\u0014č"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x8e",
+        "index10": 142,
+        "des": "emm",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ď"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x8f",
+        "index10": 143,
+        "des": "吃瓜",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ď"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x90",
+        "index10": 144,
+        "des": "呵呵哒",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Đ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x95",
+        "index10": 149,
+        "des": "汪汪",
+        "ext": "gif",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ĕ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xb3",
+        "index10": 179,
+        "des": "喵喵",
+        "ext": "gif",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ĳ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xb2",
+        "index10": 178,
+        "des": "牛气冲天",
+        "ext": "gif",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ĳ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x99",
+        "index10": 153,
+        "des": "无眼笑",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ę"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x9a",
+        "index10": 154,
+        "des": "敬礼",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ě"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x9b",
+        "index10": 155,
+        "des": "狂笑",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ě"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x9c",
+        "index10": 156,
+        "des": "面无表情",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ĝ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x9d",
+        "index10": 157,
+        "des": "摸鱼",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ĝ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xa5",
+        "index10": 165,
+        "des": "摸锦鲤",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ĥ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x9e",
+        "index10": 158,
+        "des": "魔鬼笑",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ğ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x9f",
+        "index10": 159,
+        "des": "哦",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ğ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xa0",
+        "index10": 160,
+        "des": "请",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ġ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xa1",
+        "index10": 161,
+        "des": "睁眼",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ġ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xa6",
+        "index10": 166,
+        "des": "期待",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ħ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xa7",
+        "index10": 167,
+        "des": "拿到红包",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ħ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xa8",
+        "index10": 168,
+        "des": "真好",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ĩ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xa9",
+        "index10": 169,
+        "des": "拜谢",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ĩ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xaa",
+        "index10": 170,
+        "des": "元宝",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ī"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xab",
+        "index10": 171,
+        "des": "牛啊",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ī"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xac",
+        "index10": 172,
+        "des": "胖三斤",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ĭ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xad",
+        "index10": 173,
+        "des": "好闪",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ĭ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xaf",
+        "index10": 175,
+        "des": "右拜年",
+        "packName": "QQ经典",
+        "magicStr": "\u0014į"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xae",
+        "index10": 174,
+        "des": "左拜年",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Į"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xb0",
+        "index10": 176,
+        "des": "红包包",
+        "packName": "QQ经典",
+        "magicStr": "\u0014İ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xb8",
+        "index10": 184,
+        "des": "红包",
+        "packName": "QQ经典",
+        "magicStr": "\u0014¸"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x6d",
+        "index10": 109,
+        "des": "鞭炮",
+        "packName": "QQ经典",
+        "magicStr": "\u0014m"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x6e",
+        "index10": 110,
+        "des": "灯笼",
+        "packName": "QQ经典",
+        "magicStr": "\u0014n"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x6c",
+        "index10": 108,
+        "des": "双喜",
+        "packName": "QQ经典",
+        "magicStr": "\u0014l"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x91",
+        "index10": 145,
+        "des": "我酸了",
+        "ext": "png",
+        "packName": "QQ经典",
+        "magicStr": "\u0014đ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x92",
+        "index10": 146,
+        "des": "太南了",
+        "ext": "gif",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ē"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x11",
+        "index10": 17,
+        "des": "菜刀",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0011"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x3c",
+        "index10": 60,
+        "des": "西瓜",
+        "packName": "QQ经典",
+        "magicStr": "\u0014<"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x3d",
+        "index10": 61,
+        "des": "啤酒",
+        "packName": "QQ经典",
+        "magicStr": "\u0014="
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x5c",
+        "index10": 92,
+        "des": "篮球",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\\"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x5d",
+        "index10": 93,
+        "des": "乒乓",
+        "packName": "QQ经典",
+        "magicStr": "\u0014]"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xa3",
+        "index10": 163,
+        "des": "茶",
+        "packName": "QQ经典",
+        "magicStr": "\u0014£"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x42",
+        "index10": 66,
+        "des": "咖啡",
+        "packName": "QQ经典",
+        "magicStr": "\u0014B"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x3a",
+        "index10": 58,
+        "des": "饭",
+        "packName": "QQ经典",
+        "magicStr": "\u0014:"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x7",
+        "index10": 7,
+        "des": "猪头",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0007"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x8",
+        "index10": 8,
+        "des": "玫瑰",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\b"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x39",
+        "index10": 57,
+        "des": "凋谢",
+        "packName": "QQ经典",
+        "magicStr": "\u00149"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x1d",
+        "index10": 29,
+        "des": "示爱",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u001d"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x1c",
+        "index10": 28,
+        "des": "心",
+        "nDes": "爱心",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u001c"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x4a",
+        "index10": 74,
+        "des": "心碎",
+        "packName": "QQ经典",
+        "magicStr": "\u0014J"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x3b",
+        "index10": 59,
+        "des": "蛋糕",
+        "packName": "QQ经典",
+        "magicStr": "\u0014;"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x50",
+        "index10": 80,
+        "des": "闪电",
+        "packName": "QQ经典",
+        "magicStr": "\u0014P"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x10",
+        "index10": 16,
+        "des": "炸弹",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u0010"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x46",
+        "index10": 70,
+        "des": "刀",
+        "packName": "QQ经典",
+        "magicStr": "\u0014F"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x75",
+        "index10": 117,
+        "des": "祈祷",
+        "packName": "QQ经典",
+        "magicStr": "\u0014u"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x4d",
+        "index10": 77,
+        "des": "足球",
+        "packName": "QQ经典",
+        "magicStr": "\u0014M"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x3e",
+        "index10": 62,
+        "des": "瓢虫",
+        "packName": "QQ经典",
+        "magicStr": "\u0014>"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0xf",
+        "index10": 15,
+        "des": "便便",
+        "packName": "QQ经典",
+        "magicStr": "\u0014\u000f"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x44",
+        "index10": 68,
+        "des": "月亮",
+        "packName": "QQ经典",
+        "magicStr": "\u0014D"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x4b",
+        "index10": 75,
+        "des": "太阳",
+        "packName": "QQ经典",
+        "magicStr": "\u0014K"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x4c",
+        "index10": 76,
+        "des": "礼物",
+        "packName": "QQ经典",
+        "magicStr": "\u0014L"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x2d",
+        "index10": 45,
+        "des": "拥抱",
+        "packName": "QQ经典",
+        "magicStr": "\u0014-"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x34",
+        "index10": 52,
+        "des": "强",
+        "nDes": "赞",
+        "packName": "QQ经典",
+        "magicStr": "\u00144"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x35",
+        "index10": 53,
+        "des": "弱",
+        "nDes": "踩",
+        "packName": "QQ经典",
+        "magicStr": "\u00145"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x36",
+        "index10": 54,
+        "des": "握手",
+        "packName": "QQ经典",
+        "magicStr": "\u00146"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x37",
+        "index10": 55,
+        "des": "胜利",
+        "packName": "QQ经典",
+        "magicStr": "\u00147"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x38",
+        "index10": 56,
+        "des": "抱拳",
+        "packName": "QQ经典",
+        "magicStr": "\u00148"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x3f",
+        "index10": 63,
+        "des": "勾引",
+        "packName": "QQ经典",
+        "magicStr": "\u0014?"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x49",
+        "index10": 73,
+        "des": "拳头",
+        "packName": "QQ经典",
+        "magicStr": "\u0014I"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x48",
+        "index10": 72,
+        "des": "差劲",
+        "packName": "QQ经典",
+        "magicStr": "\u0014H"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x41",
+        "index10": 65,
+        "des": "爱你",
+        "packName": "QQ经典",
+        "magicStr": "\u0014A"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x5e",
+        "index10": 94,
+        "des": "不",
+        "nDes": "NO",
+        "packName": "QQ经典",
+        "magicStr": "\u0014^"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x40",
+        "index10": 64,
+        "oDes": "好的",
+        "des": "OK",
+        "packName": "QQ经典",
+        "magicStr": "\u0014@"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x26",
+        "index10": 38,
+        "des": "爱情",
+        "packName": "QQ经典",
+        "magicStr": "\u0014&"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x2f",
+        "index10": 47,
+        "des": "飞吻",
+        "packName": "QQ经典",
+        "magicStr": "\u0014/"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x5f",
+        "index10": 95,
+        "des": "跳跳",
+        "packName": "QQ经典",
+        "magicStr": "\u0014_"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x47",
+        "index10": 71,
+        "des": "发抖",
+        "packName": "QQ经典",
+        "magicStr": "\u0014G"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x60",
+        "index10": 96,
+        "des": "怄火",
+        "packName": "QQ经典",
+        "magicStr": "\u0014`"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x61",
+        "index10": 97,
+        "des": "转圈",
+        "packName": "QQ经典",
+        "magicStr": "\u0014a"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x62",
+        "index10": 98,
+        "des": "磕头",
+        "packName": "QQ经典",
+        "magicStr": "\u0014b"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x63",
+        "index10": 99,
+        "des": "回头",
+        "packName": "QQ经典",
+        "magicStr": "\u0014c"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x64",
+        "index10": 100,
+        "des": "跳绳",
+        "packName": "QQ经典",
+        "magicStr": "\u0014d"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x4f",
+        "index10": 79,
+        "des": "挥手",
+        "packName": "QQ经典",
+        "magicStr": "\u0014O"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x65",
+        "index10": 101,
+        "des": "激动",
+        "packName": "QQ经典",
+        "magicStr": "\u0014e"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x66",
+        "index10": 102,
+        "des": "街舞",
+        "packName": "QQ经典",
+        "magicStr": "\u0014f"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x67",
+        "index10": 103,
+        "des": "献吻",
+        "packName": "QQ经典",
+        "magicStr": "\u0014g"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x68",
+        "index10": 104,
+        "des": "左太极",
+        "packName": "QQ经典",
+        "magicStr": "\u0014h"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x69",
+        "index10": 105,
+        "des": "右太极",
+        "packName": "QQ经典",
+        "magicStr": "\u0014i"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x70",
+        "index10": 112,
+        "des": "K歌",
+        "packName": "QQ经典",
+        "magicStr": "\u0014p"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x74",
+        "index10": 116,
+        "des": "喝彩",
+        "packName": "QQ经典",
+        "magicStr": "\u0014t"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x76",
+        "index10": 118,
+        "des": "爆筋",
+        "packName": "QQ经典",
+        "magicStr": "\u0014v"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x77",
+        "index10": 119,
+        "des": "棒棒糖",
+        "packName": "QQ经典",
+        "magicStr": "\u0014w"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x78",
+        "index10": 120,
+        "des": "喝奶",
+        "packName": "QQ经典",
+        "magicStr": "\u0014x"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x7b",
+        "index10": 123,
+        "des": "飞机",
+        "packName": "QQ经典",
+        "magicStr": "\u0014{"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x82",
+        "index10": 130,
+        "des": "钞票",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x8c",
+        "index10": 140,
+        "des": "药",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x8d",
+        "index10": 141,
+        "des": "手枪",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xb4",
+        "index10": 180,
+        "des": "蛋",
+        "packName": "QQ经典",
+        "magicStr": "\u0014´"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xb0",
+        "index10": 176,
+        "des": "河蟹",
+        "packName": "QQ经典",
+        "magicStr": "\u0014°"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xb1",
+        "index10": 177,
+        "des": "羊驼",
+        "packName": "QQ经典",
+        "magicStr": "\u0014±"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xb6",
+        "index10": 182,
+        "des": "菊花",
+        "packName": "QQ经典",
+        "magicStr": "\u0014¶"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xb3",
+        "index10": 179,
+        "des": "幽灵",
+        "packName": "QQ经典",
+        "magicStr": "\u0014³"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xb9",
+        "index10": 185,
+        "des": "大笑",
+        "packName": "QQ经典",
+        "magicStr": "\u0014¹"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x8f",
+        "index10": 143,
+        "des": "不开心",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x92",
+        "index10": 146,
+        "des": "冷漠",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x93",
+        "index10": 147,
+        "des": "呃",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x94",
+        "index10": 148,
+        "des": "好棒",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x95",
+        "index10": 149,
+        "des": "拜托",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x96",
+        "index10": 150,
+        "des": "点赞",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x97",
+        "index10": 151,
+        "des": "无聊",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x98",
+        "index10": 152,
+        "des": "托脸",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x99",
+        "index10": 153,
+        "des": "吃",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x9a",
+        "index10": 154,
+        "des": "送花",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x9b",
+        "index10": 155,
+        "des": "害怕",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x9c",
+        "index10": 156,
+        "des": "花痴",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x9d",
+        "index10": 157,
+        "des": "小样儿",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0x9f",
+        "index10": 159,
+        "des": "飙泪",
+        "packName": "QQ经典",
+        "magicStr": "\u0014"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xa0",
+        "index10": 160,
+        "des": "我不看",
+        "packName": "QQ经典",
+        "magicStr": "\u0014 "
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xa2",
+        "index10": 162,
+        "des": "敲开心",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ģ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xa3",
+        "index10": 163,
+        "des": "震惊",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ģ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0xa4",
+        "index10": 164,
+        "des": "让我康康",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ĥ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x96",
+        "index10": 150,
+        "des": "汗",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ė"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x97",
+        "index10": 151,
+        "des": "打脸",
+        "packName": "QQ经典",
+        "magicStr": "\u0014ė"
+    },
+    {
+        "flag": "0x14",
+        "group": "c4",
+        "index": "0x98",
+        "index10": 152,
+        "des": "击掌",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ę"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x96",
+        "index10": 150,
+        "des": "头撞击",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ö"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x97",
+        "index10": 151,
+        "des": "甩头",
+        "packName": "QQ经典",
+        "magicStr": "\u0014×"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x98",
+        "index10": 152,
+        "des": "扔狗",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ø"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xbb",
+        "index10": 187,
+        "des": "糊脸",
+        "packName": "QQ经典",
+        "magicStr": "\u0014»"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x91",
+        "index10": 145,
+        "des": "偷看",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ñ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x86",
+        "index10": 134,
+        "des": "拍桌",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Æ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xba",
+        "index10": 186,
+        "des": "啵啵",
+        "packName": "QQ经典",
+        "magicStr": "\u0014º"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xbd",
+        "index10": 189,
+        "des": "扯一扯",
+        "packName": "QQ经典",
+        "magicStr": "\u0014½"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x94",
+        "index10": 148,
+        "des": "喷脸",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ô"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xbc",
+        "index10": 188,
+        "des": "拍头",
+        "packName": "QQ经典",
+        "magicStr": "\u0014¼"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xbe",
+        "index10": 190,
+        "des": "舔一舔",
+        "packName": "QQ经典",
+        "magicStr": "\u0014¾"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x89",
+        "index10": 137,
+        "des": "干杯",
+        "packName": "QQ经典",
+        "magicStr": "\u0014É"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x92",
+        "index10": 146,
+        "des": "扇脸",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ò"
+    },
+    {
+        "flag": "0x14",
+        "group": "c2",
+        "index": "0xbf",
+        "index10": 191,
+        "des": "蹭一蹭",
+        "packName": "QQ经典",
+        "magicStr": "\u0014¿"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x85",
+        "index10": 133,
+        "des": "撩一撩",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Å"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x8b",
+        "index10": 139,
+        "des": "哼",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ë"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x8d",
+        "index10": 141,
+        "des": "掐一掐",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Í"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x81",
+        "index10": 129,
+        "des": "顶呱呱",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Á"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x82",
+        "index10": 130,
+        "des": "抱抱",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Â"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x93",
+        "index10": 147,
+        "des": "原谅",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ó"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x8c",
+        "index10": 140,
+        "des": "佛系",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ì"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x80",
+        "index10": 128,
+        "des": "拽炸天",
+        "packName": "QQ经典",
+        "magicStr": "\u0014À"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x8f",
+        "index10": 143,
+        "des": "颤抖",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ï"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x95",
+        "index10": 149,
+        "des": "生日快乐",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Õ"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x8a",
+        "index10": 138,
+        "des": "嘲讽",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ê"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x84",
+        "index10": 132,
+        "des": "开枪",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ä"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x90",
+        "index10": 144,
+        "des": "啃头",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ð"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x88",
+        "index10": 136,
+        "des": "恭喜",
+        "packName": "QQ经典",
+        "magicStr": "\u0014È"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x8e",
+        "index10": 142,
+        "des": "惊呆",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Î"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x83",
+        "index10": 131,
+        "des": "暴击",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ã"
+    },
+    {
+        "flag": "0x14",
+        "group": "c3",
+        "index": "0x87",
+        "index10": 135,
+        "des": "拍手",
+        "packName": "QQ经典",
+        "magicStr": "\u0014Ç"
+    },
+    {
+        "flag": "0x14",
+        "group": "none",
+        "index": "0x5b",
+        "index10": 91,
+        "des": "吓",
+        "packName": "QQ经典",
+        "magicStr": "\u0014["
+    }
+]

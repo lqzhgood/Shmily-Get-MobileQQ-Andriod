@@ -1,0 +1,6 @@
+{
+    "path-autocomplete.pathMappings": {
+        "@": "${folder}"
+    },
+    "cSpell.words": ["chardet", "msgtype"]
+}

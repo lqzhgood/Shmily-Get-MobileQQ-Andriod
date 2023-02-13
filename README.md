@@ -1,0 +1,173 @@
+# 说明
+
+请先阅读 https://github.com/lqzhgood/Shmily
+
+此工具是将 Android QQ/Tim 导出并转换为 `Shmily-Msg` 格式的工具
+
+### 使用
+
+-   安装 node 环境 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/nodejs.html]
+-   复制文件到目录
+    <details>
+
+    -   数据库
+        -   数据库 input\data\databases
+            -   QQ
+                -   /data/data/com.tencent.mobileqq/databases/
+            -   Tim
+                -   /data/data/com.tencent.tim/databases/
+        -   秘钥 input\data\files\kc <-- 这是个文件
+            -   QQ
+                -   /data/data/com.tencent.mobileqq/files/kc
+            -   Tim
+                -   /data/data/com.tencent.tim/files/kc
+    -   资源文件 input\assets
+        -   表情 input\assets\.emotionsm
+            -   QQ
+                -   /tencent/MobileQQ/.emotionsm
+                -   /Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.emotionsm
+            -   Tim
+                -   /tencent/Tim/.emotionsm
+                -   /Android/data/com.tencent.tim/Tencent/Tim/.emotionsm
+        -   图片 input\assets\chatpic
+            -   QQ
+                -   /Android/data/com.tencent.mobileqq/Tencent/MobileQQ/chatpic
+            -   Tim
+                -   /Android/data/com.tencent.tim/Tencent/Tim/chatpic
+        -   语音 input\assets\ptt
+            -   qq
+                -   /Android/data/com.tencent.mobileqq/Tencent/MobileQQ/${QQ 号}/ptt
+            -   Tim
+                -   /tencent/Tim/${QQ 号}/ptt
+                -   /Android/data/com.tencent.tim/Tencent/Tim/${QQ 号}/ptt
+        -   文件
+            -   QQ
+                -   /Android/data/com.tencent.mobileqq/Tencent/QQfile_recv
+            -   TIM
+                -   /Android/data/com.tencent.tim/Tencent/TIMfile_recv
+        -   视频
+            -   Tim
+                -   /tencent/Tim/shortvideo
+                -   /Android/data/com.tencent.tim/Tencent/Tim/shortvideo
+        -   其他 input\assets\other
+            -   /tencent
+            -   QQ /Android/data/com.tencent.mobileqq
+            -   Tim /Android/data/com.tencent.tim
+            -   所有你认为和聊天记录有关的文件
+            -   如果找不到文件会,从这里面竟可能的 MD5 或者 文件名 去匹配
+
+    </details>
+
+-   修改 `config.js`
+-   `npm run exportTable` 导出数据库
+    > 产物是 `.\dist\table\*.json` 本次所有数据库中用到的数据
+-   `npm run md5assets` 生成资源 MD5, 用来辅助资源解密
+-   解压缩 `decode\decryption\javaSerialization\emoticon2007\jdk-18.0.2.1.zip`
+    -   确保 `decode\decryption\javaSerialization\emoticon2007\jdk-18.0.2.1\bin\java.exe`
+-   `npm run build` 解密并生成数据
+    -   如果程序长时间(>1h)无响应, 可能是因为 `share2011` 的解码失败导致的, 可以去 `decode\typeMap.js` 中注释掉相应代码
+        -   (吐槽 ` java.io.Serializable` 用 js 硬解太难搞了, 还是建议用原生 `java` 去做解密吧)
+-   通过 https://github.com/lqzhgood/Shmily-Get-QQ-PC_utils 修复一些问题
+
+### Msg 格式
+
+```
+{
+        "source": "MobileQQ",
+        "device": "OnePlus 3T",
+        "type": "自定义表情",
+        "direction": "come",
+        "sender": "1111111111",
+        "senderName": "fish",
+        "receiver": "00000000",
+        "receiverName": "null",
+        "day": "2017-12-22",
+        "time": "08:53:33",
+        "ms": 1513904013000,
+        "content": "[甜橙少女新年系列-吃饺子]",
+        "html": "[甜橙少女新年系列-吃饺子]",
+
+        ↑↑↑↑↑  参考 ${Msg} ↑↑↑↑↑↑↑
+
+        "$MobileQQ": {
+            // !!! 必须 !!! MobileQQ 细分类型
+            "os": "Android",
+
+            "raw": {
+                // 数据库原始导出
+                ……
+                "msgData": {
+                    "type": "Buffer"
+                },
+
+                // 解密过程数据
+                "$data": {
+                    msgData:{} // 数据库相应字段解密
+                    ... // 其他解密过程中的对象
+                }
+            },
+
+            data:{
+                // 其他前端展示需要的数据
+                "webUrl": "/data/qq-android/emoticon/5e671f8149d1b094c44aa0f5232f9cfd.gif",
+                "packName": "甜橙少女新年系列",
+                "desc": "吃饺子",
+                "mark": "过年喽，想要的祝福全在这里"
+            },
+            rootPath: `${config.rootPath}`,
+        }
+    },
+```
+
+#### 说明
+
+QQ 内部的 Map 表为二维的形式
+
+-   \u00014 表情组
+    -   \u0011 第 11 个表情
+-   \u0015 ??
+-   \u0016 某种标识 多出现于字符串最前面（file、voip）
+
+### QQ 源码
+
+https://github.com/tsuzcx/qq_apk
+
+## 解密进度
+
+```
+// 2023/02/12
+
+// java https://github.com/Yiyiyimu/QQ-History-Backup
+// python https://github.com/ZhangJun2017/QQChatHistoryExporter
+
+//          js   java    python
+//  "-1000" x   x       x
+//  "-1002" x
+//  "-1013" x
+//  "-1035" x   x       x
+//  "-1049" x   x       x
+//  "-1051" x   x       x
+//  "-2000" x   x       x
+//  "-2005" x   x
+//  "-2007" x   x
+//  "-2009" x   x
+//  "-2002" x   x
+//  "-2011" x-  x
+//  "-2012" x
+//  "-2022" x   x
+//  "-3008" x   x
+//  "-5008" x   x       x
+//  "-5012" x   x       x
+//  "-5018" x   x       x
+//  "-5040" x   x
+
+// x- 部分支持
+
+
+```
+
+## 感谢
+
+https://github.com/ZhangJun2017/QQChatHistoryExporter
+
+https://github.com/Yiyiyimu/QQ-History-Backup

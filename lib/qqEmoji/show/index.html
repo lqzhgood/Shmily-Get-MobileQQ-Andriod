@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>Document</title>
+    <style>
+        #app {
+            display: flex;
+            flex-wrap: wrap;
+            width: 820px;
+            font-size: 12px;
+            margin-bottom: 400px;
+        }
+
+        p {
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .g {
+            display: inline-block;
+            border: 1px solid;
+            min-width: 60px;
+            min-height: 70px;
+        }
+
+        .g.care {
+            background-color: lightblue
+        }
+
+        img {
+            max-width: 56px;
+        }
+
+        .des.nDes {
+            border-bottom: 2px dashed red
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for="(v,i) in list" :key="i" class="g" :class="{care:!v.des}">
+            <!-- <p>{{v.flag}}</p> -->
+            <p>{{v.group === "none" ? '-' : v.group}}</p>
+            <p :title="v.index">{{v.index10}}</p>
+            <p class="des" :class="{nDes:v.nDes}" :title="v.nDes">{{v.des}}</p>
+            <p><img :src="`../emoji/${v.group}/${v.index10}.${v.ext || 'gif'}`"></p>
+        </div>
+    </div>
+    <!-- <script src="./my.js"></script>
+    <script src="./temp.js"></script>
+    <script src="./des.js"></script>
+    <script src="./sysface.js"></script> -->
+    <script src="./vue@2.js"></script>
+    <script src="./emoji.js"></script>
+    <script>
+        /*global Vue tmp des sysface my*/
+		
+        console.log('list', list);
+        new Vue({
+            el: '#app',
+            data: {
+                list,
+            },
+        });
+    </script>
+</body>
+
+</html>

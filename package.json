@@ -1,0 +1,47 @@
+{
+    "name": "QQ-Mobile-Andriod-Export",
+    "version": "1.0.0",
+    "description": "QQ-Mobile-Andriod-Export",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "t": "cross-env NODE_ENV=development nodemon --inspect t.js",
+        "dev": "cross-env NODE_ENV=development nodemon --inspect index.js",
+        "build": "cross-env NODE_ENV=production node index.js",
+        "md5assets": "node ./tools/assetsFileMd5.js",
+        "exportTable": "node ./tools/exportTable.js"
+    },
+    "keywords": [],
+    "author": "lqzh",
+    "license": "MIT",
+    "nodemonConfig": {
+        "ignore": [
+            "input/*",
+            "dist/*",
+            "**/*.json"
+        ]
+    },
+    "engines": {
+        "node": ">=v16.13.0",
+        "npm": ">=8.6.0"
+    },
+    "dependencies": {
+        "axios": "^0.27.2",
+        "better-sqlite3": "^7.5.3",
+        "chardet": "^1.4.0",
+        "cheerio": "^1.0.0-rc.11",
+        "cli-progress": "^3.11.1",
+        "cross-env": "^7.0.3",
+        "dayjs": "^1.11.3",
+        "file-type": "^16.5.3",
+        "fs-extra": "^10.1.0",
+        "iconv-lite": "^0.6.3",
+        "lodash": "^4.17.21",
+        "module-alias": "^2.2.2",
+        "protobufjs": "^6.11.3",
+        "slk-to-mp3": "^1.0.0"
+    },
+    "_moduleAliases": {
+        "@": "."
+    }
+}

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="emoji2007">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/emoji2007_jar/emoji2007.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
