@@ -6,12 +6,15 @@ const { TYPE_DICT } = require('../utils/dictMap');
 
 const { imgDataHandle, calcImgCrcDirArr } = require('./image/decode.js');
 
-async function mixMsg(m) {
-    m.$data.msgData = ddProtoBuf(m, 'msgData.data', 'Msg');
+async function mixMsg(m, merger) {
+    merger.data = {};
 
-    m.$data.elemList = []; // 包含解密过程中间数据
+    merger.res.msgData = ddProtoBuf(m, 'msgData.data', 'Msg');
 
-    const elemList = m.$data.msgData.elems;
+    merger.key = {};
+    merger.key.elemList = []; // 包含解密过程中间数据
+
+    const elemList = merger.res.msgData.elems;
 
     const mixArr = [];
 
@@ -27,16 +30,16 @@ async function mixMsg(m) {
 
         switch (t) {
             case 'textMsg':
-                m.$data.elemList[i] = v;
+                merger.key.elemList[i] = v;
                 mixArr.push({
                     type: TYPE_DICT('_文本'),
                     html: replaceQQEmoji(v),
                 });
                 break;
             case 'picMsg': {
-                const imgCrcFiles = calcImgCrcDirArr(m.$data.msgData.md5);
+                const imgCrcFiles = calcImgCrcDirArr(merger.res.msgData.md5);
                 const imgUrl = await imgDataHandle(v, imgCrcFiles, m);
-                m.$data.elemList[i] = { imgCrcFiles };
+                merger.key.elemList[i] = { imgCrcFiles };
 
                 mixArr.push({
                     type: TYPE_DICT('图片'),
@@ -54,13 +57,15 @@ async function mixMsg(m) {
         }
     }
 
+    merger.data = {
+        type: '_混合消息', // 此标识符会标记此条消息特殊处理
+        hasPic,
+        mixArr,
+    };
+
     return {
         type: hasPic ? TYPE_DICT('图片') : TYPE_DICT('消息'),
         html: mixArr.map(v => v.html).join('<br/>'),
-        merger: {
-            hasPic,
-            mixArr,
-        },
     };
 }
 

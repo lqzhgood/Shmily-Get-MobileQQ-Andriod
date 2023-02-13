@@ -32,11 +32,11 @@ const { giveExt } = require('@/utils/file');
 const LOST_IMAGE = [];
 const IMG_FILE_DETAIL = fs.readJsonSync(path.join(DIST_DIR, 'IMG_FILE_DETAIL.json'));
 
-async function imgDataHandle(data, imgCrcFiles, m) {
+async function imgDataHandle(data, imgCrcFiles, m, merger) {
     let { md5, rawMsgUrl, uuid, localPath } = data;
     let imgUrl = null;
 
-    imgUrl = await getByExtend(m, data);
+    imgUrl = await getByExtend(m, data, merger);
 
     // 通过 md5 计算 CRC64 获取文件位置
     if (!imgUrl) {

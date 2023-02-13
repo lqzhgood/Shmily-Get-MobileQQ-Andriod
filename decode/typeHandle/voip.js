@@ -10,9 +10,11 @@ const { getUniqArr } = require('../utils/index.js');
  * @param undefined
  * @return {*}
  */
-function voip(m) {
-    m.$data.msgData = ddString(m, 'msgData.data');
-    const [_desc, d1, d2, d3] = m.$data.msgData.split('|');
+function voip(m, merger) {
+    merger.data = {};
+
+    merger.res.msgData = ddString(m, 'msgData.data');
+    const [_desc, d1, d2, d3] = merger.res.msgData.split('|');
     // "\u0016未接听，点击回拨|2|3|1"
     // description 全部 \u0016 开头
     // d1 0 2 6 不知道什么意思
@@ -31,9 +33,10 @@ function voip(m) {
         desc,
     };
 
+    merger.data = voipParse;
+
     return {
         html: `${voipParse.type} ${voipParse.desc}`,
-        merger: voipParse,
     };
 }
 

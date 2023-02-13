@@ -14,22 +14,22 @@ const WEB_DIR = `${FILE_WEB_PUBLIC_DIR}/${DIR_TYPE}`;
 
 fs.copySync(path.join(__dirname, '../../../lib/qqEmoji/emoji/'), FILE_DIR);
 
-function text(m, type) {
+function text(m, type, merger) {
     let txt = '';
     switch (type) {
         case TYPE_DICT('_文本'):
         case TYPE_DICT('_文本_长文本'):
-            txt = plain(m);
+            txt = plain(m, merger);
             break;
         case TYPE_DICT('_文本_回复的消息'):
-            txt = '[回复的消息]<br/>' + plain(m);
+            txt = '[回复的消息]<br/>' + plain(m, merger);
             break;
         case TYPE_DICT('_文本_戳一戳'):
         case TYPE_DICT('_文本_未知动作'):
-            txt = actionPoke(m);
+            txt = actionPoke(m, merger);
             break;
         case TYPE_DICT('_文本_撤回'):
-            txt = withdraw(m);
+            txt = withdraw(m, merger);
             break;
         default:
             throw new Error('未知的系统类型 不该出现');
@@ -42,28 +42,35 @@ function text(m, type) {
     return txt;
 }
 
-function plain(m) {
-    m.$data.msgData = ddString(m, 'msgData.data');
-    const str = replaceQQEmoji(m.$data.msgData, WEB_DIR);
+function plain(m, merger) {
+    const t = ddString(m, 'msgData.data');
+
+    if (merger) {
+        merger.res.msgData = t;
+    }
+
+    const str = replaceQQEmoji(t, WEB_DIR);
     return str;
 }
 
 // 戳一戳
-function actionPoke(m) {
-    m.$data.msgData = JSON.parse(ddString(m, 'msgData.data'));
-    return m.$data.msgData.msg;
+function actionPoke(m, merger) {
+    const t = JSON.parse(ddString(m, 'msgData.data'));
+    if (merger) merger.res.msgData = t;
+    return t.msg;
 }
 
-function withdraw(m) {
-    m.$data.msgData = ddProtoBuf(m, 'msgData.data', 'Tip');
-    return m.$data.msgData.tip;
+function withdraw(m, merger) {
+    const t = ddProtoBuf(m, 'msgData.data', 'Tip');
+    if (merger) merger.res.msgData = t;
+    return t.tip;
 }
 
 // debug use
-function getEmojiMagicArr(m) {
-    const arr = Array.from(Buffer.from(m.$data.msgData)).map(v => v.toString(16));
+function getEmojiMagicArr(m, merger) {
+    const arr = Array.from(Buffer.from(merger.res.msgData)).map(v => v.toString(16));
 
-    console.log('', Buffer.from(m.$data.msgData).toString('hex'));
+    console.log('', Buffer.from(merger.res.msgData).toString('hex'));
 
     const group = [];
     while (arr.length > 0) {

@@ -14,7 +14,7 @@ fs.mkdirpSync(FILE_DIR);
 const WEB_DIR = `${FILE_WEB_PUBLIC_DIR}/${DIR_TYPE}`;
 
 // 分享的 卡片消息
-async function shareCard(m, type) {
+async function shareCard(m, merger) {
     const str = ddString(m, 'msgData.data');
 
     // 含义未知 有以下几种情况
@@ -23,13 +23,15 @@ async function shareCard(m, type) {
     // 2: "��\u0000\u0005t\u0002w"
     const pre = str.substring(0, 7);
 
-    m.$data.msgData = JSON.parse(str.substring(7));
-    const res = await shareCardType(m);
+    merger.res.msgData = JSON.parse(str.substring(7));
+    const res = await shareCardType(m, merger);
     return res;
 }
 
-async function shareCardType(m) {
-    const json = m.$data.msgData;
+async function shareCardType(m, merger) {
+    merger.data = {};
+
+    const json = merger.res.msgData;
     const { app, meta } = json;
     switch (app) {
         case 'com.tencent.map': {
@@ -42,12 +44,14 @@ async function shareCardType(m) {
             //     "from": "plusPanel"
             // }
             const { address, lat, lng, name } = meta['Location.Search'];
+
+            merger.data = {
+                location: meta['Location.Search'],
+            };
+
             return {
                 type: TYPE_DICT('位置'),
                 html: `${address}<br/>${lat},${lng}<br/>${name}`,
-                merger: {
-                    location: meta['Location.Search'],
-                },
             };
         }
         case 'com.tencent.structmsg': {
@@ -66,6 +70,8 @@ async function shareCardType(m) {
             //   }
             const { tag, title, desc, source_icon } = meta.news;
 
+            merger.data = meta.news;
+
             const iconLinkArr = source_icon.startsWith('http')
                 ? [source_icon]
                 : [`https://${source_icon}`, `http://${source_icon}`];
@@ -73,7 +79,7 @@ async function shareCardType(m) {
             const match = await matchFile(`${WEB_DIR}/icon`, `${FILE_DIR}/icon`, iconLinkArr, m);
             if (match) {
                 const { webUrl: iconLocalUrl } = match;
-                meta.news.$iconLocalUrl = iconLocalUrl;
+                merger.data.$iconLocalUrl = iconLocalUrl;
             }
 
             return {

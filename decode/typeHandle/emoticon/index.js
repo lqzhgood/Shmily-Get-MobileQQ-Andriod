@@ -16,13 +16,15 @@ const EmoticonPackageJSON = fs.readJsonSync(EmoticonPackageFile);
 
 const { getPkgInfoByExtend } = require('./extend');
 
-async function emoticon(m) {
+async function emoticon(m, merger) {
+    merger.data = {};
+    merger.key = {};
+
     const o = { webUrl: '', packName: '其他', desc: '未知', mark: '' };
 
-    // 导出 m.msgData.data 用以外部 Java 解码
+    // m.msgData.data 写入文件用外部 Java 解码
     fs.mkdirpSync(tmpDir);
     const buff = decryptProtoBuf(m.msgData.data);
-    _.unset(m, 'msgData.data');
     const tmpFile = path.join(tmpDir, m._id + '');
     fs.writeFileSync(tmpFile, buff);
 
@@ -31,17 +33,17 @@ async function emoticon(m) {
     const eInfo = fs.readJsonSync(tmpFile + '.json');
 
     eInfo.dwTabID = eInfo.dwTabID.toString();
-    eInfo.eId = Buffer.from(eInfo.sbufID).toString('hex');
-    // delete eInfo.sbufID; // 解码后删不删呢？
-    const { dwTabID, sbufID, faceName, eId } = eInfo;
+    eInfo.sbufID = Buffer.from(eInfo.sbufID).toString('hex');
 
-    m.$data.msgData = eInfo;
+    const { dwTabID, sbufID, faceName } = eInfo;
+
+    merger.res.msgData = eInfo;
 
     // 补全 Package 信息
-    let pkgInfo;
+    let pkgInfo = null;
 
     // extend
-    pkgInfo = await getPkgInfoByExtend(m, o, eInfo);
+    pkgInfo = await getPkgInfoByExtend(m, o, eInfo, merger);
 
     // local
     if (!pkgInfo) {
@@ -55,11 +57,12 @@ async function emoticon(m) {
         }
     }
 
-    m.$data.msgData = eInfo;
-    m.$data.packageInfo = pkgInfo;
+    merger.key.packageInfo = pkgInfo;
+
+    merger.data = o;
+
     return {
         html: `[${o.packName}-${o.desc}]`,
-        merger: o,
     };
 }
 

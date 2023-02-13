@@ -32,55 +32,55 @@ const emoticon = require('./typeHandle/emoticon/index.js');
 async function typeMap(m) {
     const { msgtype } = m;
 
-    m.$data = {};
+    // 贯穿全部操作, 操作中直接对 merger 赋值 不再作为返回值
+    const merger = { res: {} };
 
     if (m.extStr) {
-        m.$data.extStr = JSON.parse(m.extStr);
+        merger.res.extStr = JSON.parse(m.extStr);
     }
 
     switch (msgtype) {
         case -1000:
             return {
                 type: TYPE_DICT('消息'),
-                html: text(m, TYPE_DICT('_文本')),
+                html: text(m, TYPE_DICT('_文本'), merger),
+                merger,
             };
         case -1002:
             return {
                 type: TYPE_DICT('系统消息'),
-                html: system(m, TYPE_DICT('_系统消息_钱提醒')),
+                html: system(m, TYPE_DICT('_系统消息_钱提醒'), merger),
+                merger,
             };
         case -1013:
             return {
                 type: TYPE_DICT('系统消息'),
-                html: system(m, TYPE_DICT('_系统消息_成为好友')),
+                html: system(m, TYPE_DICT('_系统消息_成为好友'), merger),
+                merger,
             };
         case -1035: {
-            const { type, html, merger } = await mixMsg(m);
+            const { type, html } = await mixMsg(m, merger);
             return {
                 type,
                 html,
-                merger: {
-                    ...merger,
-                    isMixMsg: true, // 此标识符会
-                },
-                fn(msg) {
-                    _.set(msg, '$MobileQQ.type', '_混合消息');
-                },
+                merger,
             };
         }
         case -1049: // _回复的文本 not template
             return {
                 type: TYPE_DICT('消息'),
-                html: text(m, '_文本_回复的消息'),
+                html: text(m, '_文本_回复的消息', merger),
+                merger,
             };
         case -1051:
             return {
                 type: TYPE_DICT('消息'),
-                html: text(m, TYPE_DICT('_文本_长文本')),
+                html: text(m, TYPE_DICT('_文本_长文本'), merger),
+                merger,
             };
 
         case -2000: {
-            const { html, merger } = await image(m);
+            const { html } = await image(m, merger);
             return {
                 type: TYPE_DICT('图片'),
                 html,
@@ -88,7 +88,7 @@ async function typeMap(m) {
             };
         }
         case -2002: {
-            const { html, merger } = await audio(m);
+            const { html } = await audio(m, merger);
             return {
                 type: TYPE_DICT('语音'),
                 html,
@@ -97,7 +97,7 @@ async function typeMap(m) {
         }
 
         case -2005: {
-            const { html, merger } = file(m, TYPE_DICT('_文件_发送文件'));
+            const { html } = file(m, TYPE_DICT('_文件_发送文件'), merger);
             return {
                 type: TYPE_DICT('文件'),
                 html,
@@ -106,7 +106,7 @@ async function typeMap(m) {
         }
 
         case -2007: {
-            const { html, merger } = await emoticon(m);
+            const { html } = await emoticon(m, merger);
             return {
                 type: TYPE_DICT('自定义表情'),
                 html,
@@ -115,7 +115,7 @@ async function typeMap(m) {
         }
 
         case -2009: {
-            const { html, merger } = voip(m);
+            const { html } = voip(m, merger);
             return {
                 type: TYPE_DICT('视频通话'),
                 html,
@@ -123,11 +123,10 @@ async function typeMap(m) {
             };
         }
         case -2011: {
-            // const { html, merger } = await share2011(m);
+            const { html } = await share2011(m, merger);
             // 这里样本数据不够, 解码方法大概率不完备 可能导致死循环
             // 如果死循环可用下面注释的代码替换
-            const html = '';
-            const merger = {};
+            // const html = '';
             return {
                 type: TYPE_DICT('分享'),
                 html,
@@ -137,12 +136,13 @@ async function typeMap(m) {
         case -2012: {
             return {
                 type: TYPE_DICT('系统消息'),
-                html: system(m, TYPE_DICT('_系统消息_好友_黑名单开关')),
+                html: system(m, TYPE_DICT('_系统消息_好友_黑名单开关'), merger),
+                merger,
             };
         }
 
         case -2022: {
-            const { html, merger } = await video(m);
+            const { html } = await video(m, merger);
             return {
                 type: TYPE_DICT('视频'),
                 html,
@@ -151,7 +151,7 @@ async function typeMap(m) {
         }
 
         case -3008: {
-            const { html, merger } = file(m, TYPE_DICT('_文件_收到文件'));
+            const { html } = file(m, TYPE_DICT('_文件_收到文件'), merger);
             return {
                 type: TYPE_DICT('文件'),
                 html,
@@ -159,7 +159,7 @@ async function typeMap(m) {
             };
         }
         case -5008: {
-            const { type, html, merger } = await share5008(m);
+            const { type, html } = await share5008(m, merger);
             return {
                 type,
                 html,
@@ -169,19 +169,22 @@ async function typeMap(m) {
         case -5012: {
             return {
                 type: TYPE_DICT('动作'),
-                html: text(m, TYPE_DICT('_文本_戳一戳')),
+                html: text(m, TYPE_DICT('_文本_戳一戳'), merger),
+                merger,
             };
         }
         case -5018:
             return {
                 type: TYPE_DICT('动作'),
-                html: text(m, TYPE_DICT('_文本_未知动作')),
+                html: text(m, TYPE_DICT('_文本_未知动作'), merger),
+                merger,
             };
 
         case -5040: {
             return {
                 type: TYPE_DICT('撤回'),
-                html: text(m, TYPE_DICT('_文本_撤回')),
+                html: text(m, TYPE_DICT('_文本_撤回'), merger),
+                merger,
             };
         }
 
@@ -191,6 +194,7 @@ async function typeMap(m) {
             return {
                 type: '',
                 html: '',
+                merger,
             };
         }
 
@@ -201,6 +205,7 @@ async function typeMap(m) {
                 html: '[未知类型]',
                 merger: {
                     test: _test(m),
+                    ...merger,
                 },
             };
     }

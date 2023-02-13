@@ -1,7 +1,6 @@
 const path = require('path');
 const fs = require('fs-extra');
 const { FILE_WEB_PUBLIC_DIR, FILE_DIR_OUT_DIR } = require('@/config.js');
-const { Log } = require('@/utils/index');
 
 const ASSET_FILE = require('../../dist/ASSET_FILE.json');
 const { ddString } = require('../utils/ddData');
@@ -18,20 +17,23 @@ const WEB_DIR = `${FILE_WEB_PUBLIC_DIR}/${DIR_TYPE}`;
 // const s = `${d1}_${d2}_${null}`;
 // getUniqArr.uniq(s, m);
 
-function file(m, type) {
+function file(m, type, merger) {
     switch (type) {
         case TYPE_DICT('_文件_发送文件'):
-            return sendFile(m);
+            return sendFile(m, merger);
         case TYPE_DICT('_文件_收到文件'):
-            return receivedFile(m);
+            return receivedFile(m, merger);
         default:
             throw new Error('未处理的文件类型');
     }
 }
 
-function sendFile(m) {
-    m.$data.msgData = ddString(m, 'msgData.data');
-    const [_p, size, d1, d2, d3] = m.$data.msgData.split('|');
+function sendFile(m, merger) {
+    merger.data = {};
+    merger.key = {};
+
+    merger.res.msgData = ddString(m, 'msgData.data');
+    const [_p, size, d1, d2, d3] = merger.res.msgData.split('|');
     // "\u0016/data/app/be.mygod.vpnhotspot-qB1WneZ5SuoYZ8pRARYi-g==/base.apk|0|0|1"
     // p|size|d1|d2|d3
     // p 总是 \u0016 开头
@@ -44,27 +46,31 @@ function sendFile(m) {
 
     // 记录手动改变的文件
     if (isChange) {
-        Object.assign(fileObj, { changeMap });
+        merger.key.changeMap = changeMap;
     }
 
     const o = findFileByName(p, size);
 
+    merger.data = { type: 'send', fileParse: { ...fileObj, ...o } };
+
     return {
         html: '发送文件 ' + fileObj.p,
-        merger: { type: 'send', fileParse: { ...fileObj, ...o } },
     };
 }
 
-function receivedFile(m) {
-    m.$data.msgData = ddString(m, 'msgData.data');
-    const fileBase = m.$data.msgData;
+function receivedFile(m, merger) {
+    merger.data = {};
+
+    merger.res.msgData = ddString(m, 'msgData.data');
+    const fileBase = merger.res.msgData;
 
     const fileObj = { p: fileBase, ...path.parse(fileBase) };
     const o = findFileByName(fileBase, 0);
 
+    merger.data = { type: 'receive', fileParse: { ...fileObj, ...o } };
+
     return {
-        html: '对方已成功接收文件 ' + m.$data.msgData,
-        merger: { type: 'receive', fileParse: { ...fileObj, ...o } },
+        html: '对方已成功接收文件 ' + merger.res.msgData,
     };
 }
 

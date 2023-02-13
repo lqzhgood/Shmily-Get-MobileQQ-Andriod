@@ -15,14 +15,19 @@ const WEB_DIR = `${FILE_WEB_PUBLIC_DIR}/${DIR_TYPE}`;
 
 const INPUT_DIR = path.join(ASSETS_ROOT_DIR, 'ptt');
 
-async function audio(m) {
-    m.$data.msgData = ddProtoBuf(m, 'msgData.data', 'PttRec');
-    const { directUrl, sttText, voiceLength = -1, localPath, fullLocalPath } = m.$data.msgData;
+async function audio(m, merger) {
+    merger.data = {};
+    merger.key = {
+        files: [], //可能有多个文件 加密与未加密
+    };
+
+    merger.res.msgData = ddProtoBuf(m, 'msgData.data', 'PttRec');
+    const { directUrl, sttText, voiceLength = -1, localPath, fullLocalPath } = merger.res.msgData;
+
     const o = {
         sttText,
-        mp3Url: undefined,
+        mp3Url: null,
         time: voiceLength,
-        files: [], //可能有多个文件 加密与未加密
     };
 
     const match = await matchFile(WEB_DIR, FILE_DIR, [directUrl], m);
@@ -66,11 +71,13 @@ async function audio(m) {
             await slkToMp3(targetFile, targetDir, name);
             o.mp3Url = `${WEB_DIR}/${dir}/${name}.mp3`;
         }
-        o.files = sFiles;
+        merger.key.files = sFiles;
     }
+
+    merger.data = o;
+
     return {
         html: `${o.sttText} ${o.time}s ${o.mp3Url || ''}`,
-        merger: o,
     };
 }
 

@@ -11,13 +11,11 @@ const { decryptString, decryptProtoBuf, protoBufDecode } = require('../decryptio
  */
 function ddString(m, p = 'msgData.data') {
     const v = decryptString(_.get(m, p));
-    if (v) _.unset(m, p);
     return v;
 }
 
 function ddProtoBuf(m, p = 'msgData.data', protoDecoder) {
     const buff = decryptProtoBuf(_.get(m, p));
-    if (buff) _.unset(m, p);
 
     const obj = protoBufDecode[protoDecoder].decode(buff);
 

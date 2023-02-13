@@ -18,14 +18,16 @@ const INPUT_DIR = path.join(ASSETS_ROOT_DIR, 'video');
 
 const VIDEO_DIR_MD5 = fs.readdirSync(INPUT_DIR);
 
-async function video(m) {
+async function video(m, merger) {
+    merger.data = {};
+
     const o = {
         videoLocalUrl: '',
         videoCoverUrl: '', // 前端有使用作为找不到的视频封面的图片 但是QQ本身没有这张图
     };
 
-    m.$data.msgData = ddProtoBuf(m, 'msgData.data', 'ShortVideo');
-    const { fileSize, localPath } = m.$data.msgData;
+    merger.res.msgData = ddProtoBuf(m, 'msgData.data', 'ShortVideo');
+    const { fileSize, localPath } = merger.res.msgData;
 
     // /storage/emulated/0/Tencent/MobileQQ/shortvideo/B45296345682EE81D65AC3C47A4C5EEB/${fileName}
     // /storage/emulated/0/Tencent/MobileQQ/shortvideo/655DA27155B64C359F7C036A064565D6.mp4
@@ -118,9 +120,10 @@ async function video(m) {
         }
     }
 
+    merger.data = o;
+
     return {
         html: `[视频] ${localPath}`,
-        merger: o,
     };
 }
 

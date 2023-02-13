@@ -104,6 +104,8 @@ dist
 .tern-port
 
 
-input
-dist
+/input/
+/dist/
+/dist1/
 /decode/decryption/javaSerialization/emoticon2007/jdk-18.0.2.1/
+config.js

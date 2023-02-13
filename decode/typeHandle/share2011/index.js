@@ -15,9 +15,11 @@ fs.mkdirpSync(FILE_DIR);
 
 const WEB_DIR = `${FILE_WEB_PUBLIC_DIR}/${DIR_TYPE}`;
 
-async function share(m) {
+async function share(m, merger) {
+    merger.key = {};
+    merger.data = {};
+
     const buff = decryptProtoBuf(m.msgData.data);
-    _.unset(m, 'msgData.data');
 
     const decodeStr = Buffer.from(buff).toString('utf-8');
     if (decodeStr.includes('viewMultiMsg')) {
@@ -28,31 +30,37 @@ async function share(m) {
         // if (find) console.log('find', find);
         // Person sender = multiMsgFriendMap.getOrDefault(this.msgseq, friendMap).getOrDefault(senderuin, new Person(senderuin, senderuin));
 
-        m.$data.msgData = decodeStr;
+        merger.res.msgData = decodeStr;
         Log.unknownType(m);
+
+        merger.data = {};
 
         return {
             html: '[转发消息]' + decodeStr,
-            merger: {},
         };
     } else {
         // 分享消息 debug
         // fs.writeFileSync(`./t/${m.uniseq}.txt`, buff);
         const res = decode(buff, m.uniseq);
-        m.$data.msgData = res;
+        merger.res.msgData = res;
+        merger.data = res;
 
         if (res.fileType === 'local') {
             const { md5, uuid } = res;
-            const match = await matchFile(WEB_DIR, FILE_DIR, [md5, imageCloudUrl(uuid)], m);
+
+            const urls = imageCloudUrl(uuid);
+            merger.key.imageCloudUrl = urls;
+
+            const match = await matchFile(WEB_DIR, FILE_DIR, [md5, urls], m);
             if (match) {
                 const { webUrl: coverLocalUrl } = match;
-                res.$coverLocalUrl = coverLocalUrl;
+                merger.data.$coverLocalUrl = coverLocalUrl;
             }
         } else {
             const match = await matchFile(WEB_DIR, FILE_DIR, [res.cover], m);
             if (match) {
                 const { webUrl: coverLocalUrl } = match;
-                res.$coverLocalUrl = coverLocalUrl;
+                merger.data.$coverLocalUrl = coverLocalUrl;
             }
         }
 
@@ -61,7 +69,7 @@ async function share(m) {
             const match = await matchFile(`${WEB_DIR}/icon`, `${FILE_DIR}/icon`, [res.appIcon], m);
             if (match) {
                 const { webUrl: appIconLocalUrl } = match;
-                res.$appIconLocalUrl = appIconLocalUrl;
+                merger.data.$appIconLocalUrl = appIconLocalUrl;
             }
         }
 
@@ -70,9 +78,9 @@ async function share(m) {
         if (contentType == DICT_NO_F1_VALUE_ITEM) {
             des += res.author;
         }
+
         return {
             html: `${titleValue || appName}<br/>${des}`,
-            merger: {},
         };
     }
 }

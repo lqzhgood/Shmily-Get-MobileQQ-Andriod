@@ -17,7 +17,7 @@ async function ToMsg() {
 
     // debug
     // rawMsgArr = _rawMsgArr.filter(v => v.uniseq == '6664559375272572184');
-    // rawMsgArr = _rawMsgArr.filter(v => [-2007].includes(v.msgtype));
+    // rawMsgArr = _rawMsgArr.filter(v => [-2011].includes(v.msgtype));
 
     bar.start(rawMsgArr.length - 1, 0);
 
@@ -27,6 +27,9 @@ async function ToMsg() {
 
         const m = rawMsgArr[i];
         const { type, html, merger, fn } = await typeMap(m);
+        if (!merger) {
+            throw new Error('忘记传 merger 了');
+        }
 
         let direction = getDirection(m);
         if (config.isFromOtherAccount) {
@@ -77,7 +80,7 @@ async function ToMsg() {
             $MobileQQ: {
                 os: 'Android',
                 raw: m,
-                data: merger,
+                ...merger, // key res data
                 rootPath: `${config.rootPath}`,
             },
         };
@@ -99,3 +102,5 @@ function getDirection(m) {
 }
 
 module.exports = ToMsg;
+
+// setTimeout(() => {}, 10000000);

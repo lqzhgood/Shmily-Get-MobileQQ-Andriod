@@ -7,6 +7,8 @@
 ### 使用
 
 -   安装 node 环境 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/nodejs.html]
+-   安装 python 环境 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/python.html]
+    -   python 3.7.2
 -   复制文件到目录
     <details>
 
@@ -67,7 +69,7 @@
 -   `npm run build` 解密并生成数据
     -   如果程序长时间(>1h)无响应, 可能是因为 `share2011` 的解码失败导致的, 可以去 `decode\typeMap.js` 中注释掉相应代码
         -   (吐槽 ` java.io.Serializable` 用 js 硬解太难搞了, 还是建议用原生 `java` 去做解密吧)
--   通过 https://github.com/lqzhgood/Shmily-Get-QQ-PC_utils 修复一些问题
+-   [可选] 若和 QQ-PC 数据同时使用, 可通过 [Shmily-Get-QQ-PC_utils](https://github.com/lqzhgood/Shmily-Get-QQ-PC_utils) 去重
 
 ### Msg 格式
 
@@ -93,18 +95,25 @@
             // !!! 必须 !!! MobileQQ 细分类型
             "os": "Android",
 
+            // 特殊类型标识
+            type: "_混合消息"
+
             "raw": {
                 // 数据库原始导出
                 ……
                 "msgData": {
                     "type": "Buffer"
                 },
+            },
 
-                // 解密过程数据
-                "$data": {
-                    msgData:{} // 数据库相应字段解密
-                    ... // 其他解密过程中的对象
-                }
+            // 解密过程数据
+            "key": {
+                keyCode: 110
+            },
+
+            // 最终数据
+            "res": {
+                msgData:{} // 数据库相应字段解密
             },
 
             data:{
@@ -168,6 +177,8 @@ https://github.com/tsuzcx/qq_apk
 
 ## 感谢
 
-https://github.com/ZhangJun2017/QQChatHistoryExporter
+http://lqzhgood.github.io/Shmily/guide/other/thanks.html
 
-https://github.com/Yiyiyimu/QQ-History-Backup
+## 捐赠
+
+点击链接 http://lqzhgood.github.io/Shmily/guide/other/donation.html 看世界上最可爱的动物

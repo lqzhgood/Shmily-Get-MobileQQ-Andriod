@@ -19,7 +19,7 @@ const MATCH_FILE_JSON = getJSON(MATCH_FILE, []);
 // }
 const ASSET_FILE_JSON = getJSON(path.join(DIST_DIR, './ASSET_FILE.json'), []);
 
-async function matchFile(webDir, fileDir, list, type, logM = {}) {
+async function matchFile(webDir, fileDir, list, logM = {}, type) {
     list = list.filter(v => v);
     let res = null;
     for (let i = 0; i < list.length; i++) {
@@ -55,6 +55,7 @@ async function matchFile(webDir, fileDir, list, type, logM = {}) {
         switch (mType) {
             case 'md5': {
                 // 匹配资源列表
+                // type 没用到, 仅预留
                 const md5Res = await matchMd5(l, fileDir, ['文件'].includes(type));
                 if (md5Res) {
                     const { f, md5, ext } = md5Res;

@@ -7,19 +7,21 @@ const { imgDataHandle, calcImgCrcDirArr } = require('./decode');
  * @param undefined
  * @return {*}
  */
-async function image(m) {
-    m.$data.msgData = ddProtoBuf(m, 'msgData.data', 'PicRec');
+async function image(m, merger) {
+    merger.key = {};
+    merger.data = {};
 
-    const imgCrcFiles = calcImgCrcDirArr(m.$data.msgData.md5);
-    m.$data.imgCrcFiles = imgCrcFiles;
+    const decode = ddProtoBuf(m, 'msgData.data', 'PicRec');
+    merger.res.msgData = decode;
 
-    const imgUrl = await imgDataHandle(m.$data.msgData, imgCrcFiles, m);
+    const imgCrcFiles = calcImgCrcDirArr(decode.md5);
+    merger.key.imgCrcFiles = imgCrcFiles;
+
+    const imgUrl = await imgDataHandle(decode, imgCrcFiles, m, merger);
+    merger.data.imgUrl = imgUrl;
 
     return {
         html: '[图]',
-        merger: {
-            imgUrl,
-        },
     };
 }
 
