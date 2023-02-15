@@ -6,7 +6,7 @@ const path = require('path');
 
 const { fillQQName } = require('./utils/msg');
 const { clearTmp } = require('./utils/file');
-const { DIST_DIR } = require('./config');
+const { DIST_DIR, leftNum } = require('./config');
 
 if (!fs.existsSync('./dist')) {
     fs.mkdirSync('./dist');
@@ -29,7 +29,7 @@ if (!fs.existsSync('./dist')) {
     const ToMsg = require('./decode/index');
     const msgArr = await ToMsg();
 
-    fs.writeFileSync(path.join(DIST_DIR, `msg-qq_android.json`), JSON.stringify(msgArr, null, 4));
+    fs.writeFileSync(path.join(DIST_DIR, `msg-qq_android_${leftNum}.json`), JSON.stringify(msgArr, null, 4));
 
     console.log('Delete tmp...');
     // clearTmp();
