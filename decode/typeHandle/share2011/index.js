@@ -19,6 +19,8 @@ async function share(m, merger) {
     merger.key = {};
     merger.data = {};
 
+    merger.type = `share-2011`;
+
     const buff = decryptProtoBuf(m.msgData.data);
 
     const decodeStr = Buffer.from(buff).toString('utf-8');

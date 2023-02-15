@@ -15,6 +15,8 @@ const WEB_DIR = `${FILE_WEB_PUBLIC_DIR}/${DIR_TYPE}`;
 
 // 分享的 卡片消息
 async function shareCard(m, merger) {
+    merger.data = {};
+
     const str = ddString(m, 'msgData.data');
 
     // 含义未知 有以下几种情况
@@ -29,8 +31,6 @@ async function shareCard(m, merger) {
 }
 
 async function shareCardType(m, merger) {
-    merger.data = {};
-
     const json = merger.res.msgData;
     const { app, meta } = json;
     switch (app) {
@@ -71,6 +71,7 @@ async function shareCardType(m, merger) {
             const { tag, title, desc, source_icon } = meta.news;
 
             merger.data = meta.news;
+            merger.type = `share-5008`;
 
             const iconLinkArr = source_icon.startsWith('http')
                 ? [source_icon]
