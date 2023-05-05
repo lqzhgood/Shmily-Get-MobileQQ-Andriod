@@ -146,8 +146,8 @@ https://github.com/tsuzcx/qq_apk
 ```
 // 2023/02/12
 
-// java https://github.com/Yiyiyimu/QQ-History-Backup
-// python https://github.com/ZhangJun2017/QQChatHistoryExporter
+// python https://github.com/Yiyiyimu/QQ-History-Backup
+// java https://github.com/ZhangJun2017/QQChatHistoryExporter
 
 //          js   java    python
 //  "-1000" x   x       x
