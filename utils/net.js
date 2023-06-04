@@ -23,7 +23,6 @@ async function down(url, absoluteOutFile) {
     let res = [new Error("no result"), null];
     let u = url;
     while (maxRedirects--) {
-        console.log("maxRedirects", maxRedirects);
         res = await downResult(u, absoluteOutFile);
         const [err, data] = res;
 
