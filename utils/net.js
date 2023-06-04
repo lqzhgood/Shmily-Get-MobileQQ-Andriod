@@ -14,10 +14,38 @@ const axiosDown = axiosBase.create({
         "sec-ch-ua-platform": '"Windows"',
         Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
     },
+    maxRedirects: 0,
     // timeout: 60 * 1000,
 });
 
-function down(url, absoluteOutFile) {
+async function down(url, absoluteOutFile) {
+    let maxRedirects = 5;
+    let res = [new Error("no result"), null];
+    let u = url;
+    while (maxRedirects--) {
+        console.log("maxRedirects", maxRedirects);
+        res = await downResult(u, absoluteOutFile);
+        const [err, data] = res;
+
+        // 没问题直接返回
+        if (!err) return res;
+
+        // 判断问题是否为 重定向
+        const code = err?.response?.status;
+        if (code >= 300 && code < 400) {
+            // 如果是重定向到下一个循环，重试 downResult
+            // downResult 会自动对新的 URL 进行 ResizeImage
+            u = err?.response?.headers?.location;
+        } else {
+            // 其他问题 直接返回
+            return res;
+        }
+    }
+    // 重试次数用完，返回最后一次请求结果
+    return res;
+}
+
+function downResult(url, absoluteOutFile) {
     url = ResizeImage(url);
     if (!absoluteOutFile) {
         const tmpDir = path.join(DIST_DIR, "tmp");
@@ -33,6 +61,9 @@ function down(url, absoluteOutFile) {
         method: "get",
         url,
         responseType: "stream",
+        headers: {
+            referer: new URL(url).origin,
+        },
     })
         .then((response) => {
             const writer = fs.createWriteStream(absoluteOutFile);
