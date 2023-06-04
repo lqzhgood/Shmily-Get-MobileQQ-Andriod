@@ -22,6 +22,7 @@ async function down(url, absoluteOutFile) {
     let maxRedirects = 5;
     let res = [new Error("no result"), null];
     let u = url;
+
     while (maxRedirects--) {
         res = await downResult(u, absoluteOutFile);
         const [err, data] = res;
@@ -35,6 +36,11 @@ async function down(url, absoluteOutFile) {
             // 如果是重定向到下一个循环，重试 downResult
             // downResult 会自动对新的 URL 进行 ResizeImage
             u = err?.response?.headers?.location;
+
+            // 修复 url 的一些 bug
+            if (u.startsWith("//")) {
+                u = err.request.protocol + u;
+            }
         } else {
             // 其他问题 直接返回
             return res;
@@ -46,6 +52,7 @@ async function down(url, absoluteOutFile) {
 
 function downResult(url, absoluteOutFile) {
     url = ResizeImage(url);
+
     if (!absoluteOutFile) {
         const tmpDir = path.join(DIST_DIR, "tmp");
         fs.mkdirpSync(tmpDir);
