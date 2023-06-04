@@ -1,13 +1,17 @@
-const path = require('path');
-const fs = require('fs-extra');
-const { FILE_WEB_PUBLIC_DIR, FILE_DIR_OUT_DIR } = require('@/config.js');
+const path = require("path");
+const fs = require("fs-extra");
+const {
+    FILE_WEB_PUBLIC_DIR,
+    FILE_DIR_OUT_DIR,
+    DIST_DIR_TEMP,
+} = require("@/config.js");
 
-const ASSET_FILE = require('../../dist/ASSET_FILE.json');
-const { ddString } = require('../utils/ddData');
+const ASSET_FILE = require(path.join(DIST_DIR_TEMP, "ASSET_FILE.json"));
 
-const { TYPE_DICT } = require('../utils/dictMap');
+const { ddString } = require("../utils/ddData");
+const { TYPE_DICT } = require("../utils/dictMap");
 
-const DIR_TYPE = 'file';
+const DIR_TYPE = "file";
 const FILE_DIR = path.join(FILE_DIR_OUT_DIR, DIR_TYPE);
 fs.mkdirpSync(FILE_DIR);
 
@@ -19,12 +23,12 @@ const WEB_DIR = `${FILE_WEB_PUBLIC_DIR}/${DIR_TYPE}`;
 
 function file(m, type, merger) {
     switch (type) {
-        case TYPE_DICT('_文件_发送文件'):
+        case TYPE_DICT("_文件_发送文件"):
             return sendFile(m, merger);
-        case TYPE_DICT('_文件_收到文件'):
+        case TYPE_DICT("_文件_收到文件"):
             return receivedFile(m, merger);
         default:
-            throw new Error('未处理的文件类型');
+            throw new Error("未处理的文件类型");
     }
 }
 
@@ -32,15 +36,15 @@ function sendFile(m, merger) {
     merger.data = {};
     merger.key = {};
 
-    merger.res.msgData = ddString(m, 'msgData.data');
-    const [_p, size, d1, d2, d3] = merger.res.msgData.split('|');
+    merger.res.msgData = ddString(m, "msgData.data");
+    const [_p, size, d1, d2, d3] = merger.res.msgData.split("|");
     // "\u0016/data/app/be.mygod.vpnhotspot-qB1WneZ5SuoYZ8pRARYi-g==/base.apk|0|0|1"
     // p|size|d1|d2|d3
     // p 总是 \u0016 开头
     // d1 d2 d3 含义未知
 
     // eslint-disable-next-line no-control-regex
-    const [isChange, p, changeMap] = manualFileMap(_p.replace(/^\u0016/, ''));
+    const [isChange, p, changeMap] = manualFileMap(_p.replace(/^\u0016/, ""));
 
     const fileObj = { p, ...path.parse(p), size };
 
@@ -51,26 +55,26 @@ function sendFile(m, merger) {
 
     const o = findFileByName(p, size);
 
-    merger.data = { type: 'send', fileParse: { ...fileObj, ...o } };
+    merger.data = { type: "send", fileParse: { ...fileObj, ...o } };
 
     return {
-        html: '发送文件 ' + fileObj.p,
+        html: "发送文件 " + fileObj.p,
     };
 }
 
 function receivedFile(m, merger) {
     merger.data = {};
 
-    merger.res.msgData = ddString(m, 'msgData.data');
+    merger.res.msgData = ddString(m, "msgData.data");
     const fileBase = merger.res.msgData;
 
     const fileObj = { p: fileBase, ...path.parse(fileBase) };
     const o = findFileByName(fileBase, 0);
 
-    merger.data = { type: 'receive', fileParse: { ...fileObj, ...o } };
+    merger.data = { type: "receive", fileParse: { ...fileObj, ...o } };
 
     return {
-        html: '对方已成功接收文件 ' + merger.res.msgData,
+        html: "对方已成功接收文件 " + merger.res.msgData,
     };
 }
 
@@ -92,26 +96,26 @@ function receivedFile(m, merger) {
 function manualFileMap(p) {
     const list = [
         {
-            o: '/data/app/be.mygod.vpnhotspot-qB1WneZ5SuoYZ8pRARYi-g==/base.apk',
-            t: '/data/app/be.mygod.vpnhotspot-qB1WneZ5SuoYZ8pRARYi-g==/be.mygod.vpnhotspot_base.apk',
+            o: "/data/app/be.mygod.vpnhotspot-qB1WneZ5SuoYZ8pRARYi-g==/base.apk",
+            t: "/data/app/be.mygod.vpnhotspot-qB1WneZ5SuoYZ8pRARYi-g==/be.mygod.vpnhotspot_base.apk",
         },
         {
-            o: '/data/app/com.pavelrekun.rekado-1/base.apk',
-            t: '/data/app/com.pavelrekun.rekado-1/com.pavelrekun.rekado-1_base.apk',
+            o: "/data/app/com.pavelrekun.rekado-1/base.apk",
+            t: "/data/app/com.pavelrekun.rekado-1/com.pavelrekun.rekado-1_base.apk",
         },
     ];
 
-    const f = list.find(v => v.o === p);
+    const f = list.find((v) => v.o === p);
     return f ? [true, f.t, f] : [false, p];
 }
 
 function findFileByName(p, size) {
     const fileName = path.parse(p).base;
-    const find = ASSET_FILE.find(v => v.f === fileName);
+    const find = ASSET_FILE.find((v) => v.f === fileName);
 
     const o = {
         size,
-        url: '',
+        url: "",
     };
 
     if (find) {

@@ -67,8 +67,14 @@
 -   解压缩 `decode\decryption\javaSerialization\emoticon2007\jdk-18.0.2.1.zip`
     -   确保 `decode\decryption\javaSerialization\emoticon2007\jdk-18.0.2.1\bin\java.exe`
 -   `npm run build` 解密并生成数据
-    -   如果程序长时间(>1h)无响应, 可能是因为 `share2011` 的解码失败导致的, 可以去 `decode\typeMap.js` 中注释掉相应代码
-        -   (吐槽 ` java.io.Serializable` 用 js 硬解太难搞了, 还是建议用原生 `java` 去做解密吧)
+
+    如果程序长时间(>10min)进度条无变化, 可能有以下原因
+
+    -   `share2011` 解码失败, 可以去 `decode\typeMap.js` 中注释掉相应代码 (吐槽 ` java.io.Serializable` 用 js 硬解太难搞了, 还是建议用原生 `java` 去做解密吧)
+    -   下载资源时间过长，大部分原因是 CDN 的资源已经没有了，需要回源拿，导致第一次下载时间过长，有以下两种办法
+        -   可以去 `utils\net.js` 设置 axiosDown 的 timeout
+        -   ctrl+c 重新来过吧，第二次请求大概率就快了。 // 下载有断点机制，下载过的不会重复下载
+
 -   [可选] 若和 QQ-PC 数据同时使用, 可通过 [Shmily-Get-QQ-PC_utils](https://github.com/lqzhgood/Shmily-Get-QQ-PC_utils) 去重
 
 ### Msg 格式

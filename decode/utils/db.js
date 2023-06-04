@@ -1,12 +1,14 @@
 //  eslint-disable-next-line no-undef
 BigInt.prototype.toJSON = function () {
-    return this > Number.MIN_SAFE_INTEGER && this < Number.MAX_SAFE_INTEGER ? Number(this) : this.toString();
+    return this > Number.MIN_SAFE_INTEGER && this < Number.MAX_SAFE_INTEGER
+        ? Number(this)
+        : this.toString();
 };
 
-const fs = require('fs-extra');
-const path = require('path');
-const Database = require('better-sqlite3');
-const { rightNum, DB_DIR, DIST_DIR } = require('../../config');
+const fs = require("fs-extra");
+const path = require("path");
+const Database = require("better-sqlite3");
+const { rightNum, DB_DIR, DIST_DIR_TEMP } = require("../../config");
 
 function conn(DB_FILE) {
     const db = new Database(DB_FILE, { readonly: true });
@@ -23,14 +25,17 @@ function conn(DB_FILE) {
     return db;
 }
 
-const mainDB = conn(path.join(DB_DIR, rightNum + '.db'));
-const slowDB = conn(path.join(DB_DIR, 'slowtable_' + rightNum + '.db'));
+const mainDB = conn(path.join(DB_DIR, rightNum + ".db"));
+const slowDB = conn(path.join(DB_DIR, "slowtable_" + rightNum + ".db"));
 
 async function exportTable(db, f) {
-    const out = path.join(DIST_DIR, 'table');
+    const out = path.join(DIST_DIR_TEMP, "table");
     fs.mkdirpSync(out);
     const json = await db();
-    fs.writeFileSync(path.join(out, `./${f}.json`), JSON.stringify(json, null, 4));
+    fs.writeFileSync(
+        path.join(out, `./${f}.json`),
+        JSON.stringify(json, null, 4)
+    );
 }
 
 module.exports = {

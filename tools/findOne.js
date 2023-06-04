@@ -1,3 +1,3 @@
-const j = require('../dist/table/message.json');
+const j = require("../dist/_temp/table/message.json");
 
-console.log('json', j[26166], j.length - 1);
+console.log("json", j[26166], j.length - 1);
