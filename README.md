@@ -72,7 +72,7 @@
 
     -   下载资源时间过长，大部分原因是 CDN 的资源已经没有了，需要回源拿，导致第一次下载时间过长，有以下两种办法
         -   ctrl+c 重新来过吧，过会儿再试，第二次请求大概率就快了。 // 下载有断点机制，下载过的不会重复下载
-        -   可以去 `utils\net.js` 设置 axiosDown 的 timeout
+        -   可以去 `utils\net.js` 设置 axiosDown 的 timeout，使每次下载若超过 timeout 则放弃
     -   `share2011` 解码失败, 可以去 `decode\typeMap.js` 中注释掉相应代码 (吐槽 ` java.io.Serializable` 用 js 硬解太难搞了, 还是建议用原生 `java` 去做解密吧)
 
     
