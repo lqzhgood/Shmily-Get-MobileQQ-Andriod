@@ -13,50 +13,50 @@
     <details>
 
     -   数据库
-        -   数据库 input\data\databases
+        -   数据库 `input\data\databases`
             -   QQ
                 -   /data/data/com.tencent.mobileqq/databases/
             -   Tim
                 -   /data/data/com.tencent.tim/databases/
-        -   秘钥 input\data\files\kc <-- 这是个文件
+        -   秘钥 `input\data\files\kc` <-- 这是个文件
             -   QQ
                 -   /data/data/com.tencent.mobileqq/files/kc
             -   Tim
                 -   /data/data/com.tencent.tim/files/kc
-    -   资源文件 input\assets
-        -   表情 input\assets\.emotionsm
+    -   资源文件 `input\assets`
+        -   表情 `input\assets\.emotionsm`
             -   QQ
                 -   /tencent/MobileQQ/.emotionsm
                 -   /Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.emotionsm
             -   Tim
                 -   /tencent/Tim/.emotionsm
                 -   /Android/data/com.tencent.tim/Tencent/Tim/.emotionsm
-        -   图片 input\assets\chatpic
+        -   图片 `input\assets\chatpic`
             -   QQ
                 -   /Android/data/com.tencent.mobileqq/Tencent/MobileQQ/chatpic
             -   Tim
                 -   /Android/data/com.tencent.tim/Tencent/Tim/chatpic
-        -   语音 input\assets\ptt
+        -   语音 `input\assets\ptt`
             -   qq
                 -   /Android/data/com.tencent.mobileqq/Tencent/MobileQQ/${QQ 号}/ptt
             -   Tim
                 -   /tencent/Tim/${QQ 号}/ptt
                 -   /Android/data/com.tencent.tim/Tencent/Tim/${QQ 号}/ptt
-        -   文件
+        -   文件 `input\assets\file`
             -   QQ
                 -   /Android/data/com.tencent.mobileqq/Tencent/QQfile_recv
             -   TIM
                 -   /Android/data/com.tencent.tim/Tencent/TIMfile_recv
-        -   视频
+        -   视频 `input\assets\video`
             -   Tim
                 -   /tencent/Tim/shortvideo
                 -   /Android/data/com.tencent.tim/Tencent/Tim/shortvideo
-        -   其他 input\assets\other
+        -   其他 `input\assets\other`
             -   /tencent
             -   QQ /Android/data/com.tencent.mobileqq
             -   Tim /Android/data/com.tencent.tim
             -   所有你认为和聊天记录有关的文件
-            -   如果找不到文件会,从这里面竟可能的 MD5 或者 文件名 去匹配
+            -   如果找不到文件会,从这里面尽可能的 MD5 或者 文件名 去匹配
 
     </details>
 
