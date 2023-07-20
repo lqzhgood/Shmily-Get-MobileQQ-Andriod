@@ -80,60 +80,7 @@
 
 ### Msg 格式
 
-```
-{
-        "source": "MobileQQ",
-        "device": "OnePlus 3T",
-        "type": "自定义表情",
-        "direction": "come",
-        "sender": "1111111111",
-        "senderName": "fish",
-        "receiver": "00000000",
-        "receiverName": "null",
-        "day": "2017-12-22",
-        "time": "08:53:33",
-        "ms": 1513904013000,
-        "content": "[甜橙少女新年系列-吃饺子]",
-        "html": "[甜橙少女新年系列-吃饺子]",
-
-        ↑↑↑↑↑  参考 ${Msg} ↑↑↑↑↑↑↑
-
-        "$MobileQQ": {
-            // !!! 必须 !!! MobileQQ 细分类型
-            "os": "Android",
-
-            // 特殊类型标识
-            type: "_混合消息"
-
-            "raw": {
-                // 数据库原始导出
-                ……
-                "msgData": {
-                    "type": "Buffer"
-                },
-            },
-
-            // 解密过程数据
-            "key": {
-                keyCode: 110
-            },
-
-            // 最终数据
-            "res": {
-                msgData:{} // 数据库相应字段解密
-            },
-
-            data:{
-                // 其他前端展示需要的数据
-                "webUrl": "/data/qq-android/emoticon/5e671f8149d1b094c44aa0f5232f9cfd.gif",
-                "packName": "甜橙少女新年系列",
-                "desc": "吃饺子",
-                "mark": "过年喽，想要的祝福全在这里"
-            },
-            rootPath: `${config.rootPath}`,
-        }
-    },
-```
+详见 [Shmily文档](http://lqzhgood.github.io/Shmily) __数据格式__ 章节
 
 #### 说明
 
