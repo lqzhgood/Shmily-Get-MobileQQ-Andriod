@@ -199,7 +199,7 @@ async function typeMap(m) {
         }
 
         default:
-            // console.log('❌', 'unknown msgtype',msgtype);
+            console.log('❌', 'unknown msgtype',msgtype);
             return {
                 type: TYPE_DICT('未知'),
                 html: '[未知类型]',

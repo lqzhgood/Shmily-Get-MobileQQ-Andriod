@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const { decryptString, decryptProtoBuf, protoBufDecode } = require('../decryption');
+const { decryptString, decryptProtoBuf, protoBufDecode } = require('../decryption/index.js');
 
 function test(m) {
     m.$data.decryptString = decryptString(m.msgData.data);
