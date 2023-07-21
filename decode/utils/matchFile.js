@@ -20,7 +20,6 @@ const MATCH_FILE_JSON = getJSON(MATCH_FILE, []);
 const ASSET_FILE_JSON = getJSON(path.join(DIST_DIR_TEMP, './ASSET_FILE.json'), []);
 
 async function matchFile(webDir, fileDir, list, logM = {}, type) {
-    console.log('list', list);
     list = list.filter(v => v);
     let res = null;
     for (let i = 0; i < list.length; i++) {

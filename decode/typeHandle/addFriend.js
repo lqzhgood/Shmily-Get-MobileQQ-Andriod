@@ -21,7 +21,6 @@ async function handler(m, merger) {
     const nicePics = [];
 
     for (let i = 0; i < o.field_nicepics.length; i++) {
-        console.log();
         const p = o.field_nicepics[i];
 
         const { ori, medium, ...otherUrl } = p;

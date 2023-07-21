@@ -22,7 +22,6 @@ function test(m) {
         _.set(data, `${method}.decode`, res);
     }
 
-    console.log('data', data);
     return data;
 }
 
