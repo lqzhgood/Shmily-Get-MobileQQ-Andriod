@@ -1,9 +1,5 @@
-const _ = require('lodash');
-const fs = require('fs-extra');
-const path = require('path');
-const { DIST_DIR_TEMP } = require('../config.js');
+const { Log } = require('@/utils/index');
 const { TYPE_DICT } = require('./utils/dictMap');
-const _test = require('./typeHandle/_test.js');
 
 /**
  * @name: 各种类型的 handler
@@ -31,6 +27,8 @@ const video = require('./typeHandle/video.js');
 const audio = require('./typeHandle/audio.js');
 const emoticon = require('./typeHandle/emoticon/index.js');
 const addFriend = require('./typeHandle/addFriend.js');
+
+const _test = require('./typeHandle/_test.js');
 
 async function typeMap(m) {
     const { msgtype } = m;
@@ -218,13 +216,8 @@ async function typeMap(m) {
         }
 
         default: {
+            Log.unknownType(m);
             const test = _test(m);
-            const p = path.join(DIST_DIR_TEMP, './unknownType');
-            const f = path.join(p, m._id + '.json');
-            console.log('❌', '未知类型 已写入', f);
-            fs.mkdirpSync(p);
-            fs.writeFileSync(f, JSON.stringify({ m, test }, null, 4));
-
             return {
                 type: TYPE_DICT('未知'),
                 html: '[未知类型]',

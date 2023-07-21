@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs-extra');
+const dayjs = require('dayjs');
 
 function group(arr, key) {
     return arr.reduce((pre, cV) => {
@@ -54,7 +55,12 @@ function Log() {
         );
         fs.writeFileSync(file, JSON.stringify(m, null, 4));
         console.log('\n');
-        console.log('❓', '未知的类型,请附图提交 issues', m);
+        console.log(
+            '❓',
+            `未知的类型, 消息时间：${dayjs(m.time * 1000).format(
+                'YYYY-MM-DD HH:mm:ss',
+            )} 已写入 ${file} ，请附图提交 issues`,
+        );
     };
 }
 
