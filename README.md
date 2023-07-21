@@ -98,7 +98,7 @@ https://github.com/tsuzcx/qq_apk
 ## 解密进度
 
 ```
-// 2023/02/12
+// 2023/07/21
 
 // js 本项目
 // java https://github.com/ZhangJun2017/QQChatHistoryExporter
@@ -120,10 +120,11 @@ https://github.com/tsuzcx/qq_apk
 //  "-2012" x
 //  "-2022" x   x
 //  "-3008" x   x
-//  "-5008" x   x       x
+//  "-5008" x-  x       x
 //  "-5012" x   x       x
 //  "-5018" x   x       x
 //  "-5040" x   x
+//  "-7012" x    
 
 // x- 部分支持
 
