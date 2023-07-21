@@ -1,5 +1,7 @@
 const _ = require('lodash');
-
+const fs = require('fs-extra');
+const path = require('path');
+const { DIST_DIR_TEMP } = require('../config.js');
 const { TYPE_DICT } = require('./utils/dictMap');
 const _test = require('./typeHandle/_test.js');
 
@@ -28,12 +30,20 @@ const share2011 = require('./typeHandle/share2011/index.js');
 const video = require('./typeHandle/video.js');
 const audio = require('./typeHandle/audio.js');
 const emoticon = require('./typeHandle/emoticon/index.js');
+const addFriend = require('./typeHandle/addFriend.js');
 
 async function typeMap(m) {
     const { msgtype } = m;
 
     // 贯穿全部操作, 操作中直接对 merger 赋值 不再作为返回值
     const merger = { res: {} };
+
+    //  "os":    "Android",
+    // "raw": { } // 数据的原始样貌
+    // "key": {} // 解密过程中有帮助的值或备注
+    // "res": {} // 和 raw  key一一对应, value 为解密后的数据   如未加密则  raw =res
+    // "data": {} // 前端组件显示所需要的数据
+    // "rootPath" ///  /data/ $rootPath /img/123.png 资源文件夹名称
 
     if (m.extStr) {
         merger.res.extStr = JSON.parse(m.extStr);
@@ -187,6 +197,15 @@ async function typeMap(m) {
                 merger,
             };
         }
+        case -7012: {
+            const { html } = await addFriend(m, merger);
+
+            return {
+                type: TYPE_DICT('系统消息'),
+                html,
+                merger,
+            };
+        }
 
         case 'TEST': {
             _test(m);
@@ -198,16 +217,23 @@ async function typeMap(m) {
             };
         }
 
-        default:
-            console.log('❌', 'unknown msgtype',msgtype);
+        default: {
+            const test = _test(m);
+            const p = path.join(DIST_DIR_TEMP, './unknownType');
+            const f = path.join(p, m._id + '.json');
+            console.log('❌', '未知类型 已写入', f);
+            fs.mkdirpSync(p);
+            fs.writeFileSync(f, JSON.stringify({ m, test }, null, 4));
+
             return {
                 type: TYPE_DICT('未知'),
                 html: '[未知类型]',
                 merger: {
-                    test: _test(m),
+                    test,
                     ...merger,
                 },
             };
+        }
     }
 }
 

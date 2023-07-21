@@ -2,10 +2,12 @@ const _ = require('lodash');
 const { decryptString, decryptProtoBuf, protoBufDecode } = require('../decryption/index.js');
 
 function test(m) {
-    m.$data.decryptString = decryptString(m.msgData.data);
+    const data = {};
+
+    data.decryptString = decryptString(m.msgData.data);
 
     const buff = decryptProtoBuf(m.msgData.data);
-    m.$data.decryptProtoBuf = buff.toString();
+    data.decryptProtoBuf = buff.toString();
 
     const methods = Object.keys(protoBufDecode).filter(v => /^[A-Z]/.test(v));
 
@@ -17,8 +19,11 @@ function test(m) {
         } catch (error) {
             res = error.message;
         }
-        _.set(m.$data, `${method}.decode`, res);
+        _.set(data, `${method}.decode`, res);
     }
+
+    console.log('data', data);
+    return data;
 }
 
 module.exports = test;

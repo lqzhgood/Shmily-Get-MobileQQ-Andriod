@@ -1,20 +1,18 @@
-const dayjs = require("dayjs");
-const fs = require("fs-extra");
-const path = require("path");
-const _ = require("lodash");
-const cliProgress = require("cli-progress");
+const dayjs = require('dayjs');
+const fs = require('fs-extra');
+const path = require('path');
+const _ = require('lodash');
+const cliProgress = require('cli-progress');
 const bar = new cliProgress.SingleBar({});
 
-const typeMap = require("./typeMap");
-const { htmlToText } = require("./utils/index.js");
+const typeMap = require('./typeMap');
+const { htmlToText } = require('./utils/index.js');
 
-const config = require("../config");
+const config = require('../config');
 const { DEVICE, DIST_DIR_TEMP } = config;
 
 async function ToMsg() {
-    const _rawMsgArr = fs.readJsonSync(
-        path.join(DIST_DIR_TEMP, "./table/message.json")
-    );
+    const _rawMsgArr = fs.readJsonSync(path.join(DIST_DIR_TEMP, './table/message.json'));
     let rawMsgArr = _rawMsgArr;
 
     // debug
@@ -30,18 +28,18 @@ async function ToMsg() {
         const m = rawMsgArr[i];
         const { type, html, merger, fn } = await typeMap(m);
         if (!merger) {
-            throw new Error("忘记传 merger 了");
+            throw new Error('忘记传 merger 了');
         }
 
         let direction = getDirection(m);
         if (config.isFromOtherAccount) {
-            direction = direction === "go" ? "come" : "go";
+            direction = direction === 'go' ? 'come' : 'go';
         }
 
         const send = {};
         const receive = {};
 
-        if (direction === "go") {
+        if (direction === 'go') {
             send.sender = config.rightNum;
             send.senderName = config.rightName;
 
@@ -49,7 +47,7 @@ async function ToMsg() {
             receive.receiverName = config.leftName;
         }
 
-        if (direction === "come") {
+        if (direction === 'come') {
             send.sender = config.leftNum;
             send.senderName = config.leftName;
 
@@ -60,12 +58,10 @@ async function ToMsg() {
         const t = m.time * 1000;
 
         // 压缩  m.msgData
-        if (Array.isArray(m.msgData?.data))
-            m.msgData.data =
-                "0x" + Buffer.from(m.msgData?.data).toString("hex");
+        if (Array.isArray(m.msgData?.data)) m.msgData.data = '0x' + Buffer.from(m.msgData?.data).toString('hex');
 
         const msg = {
-            source: "MobileQQ",
+            source: 'MobileQQ',
             device: DEVICE,
             type,
 
@@ -74,15 +70,15 @@ async function ToMsg() {
             ...send,
             ...receive,
 
-            day: dayjs(t).format("YYYY-MM-DD"),
-            time: dayjs(t).format("HH:mm:ss"),
+            day: dayjs(t).format('YYYY-MM-DD'),
+            time: dayjs(t).format('HH:mm:ss'),
             ms: t,
 
             content: htmlToText(html),
-            html: html.replace(/(\r\n|\r|\n)/gim, "<br/>"),
+            html: html.replace(/(\r\n|\r|\n)/gim, '<br/>'),
 
             $MobileQQ: {
-                os: "Android",
+                os: 'Android',
                 raw: m,
                 ...merger, // key res data
                 rootPath: `${config.rootPath}`,
@@ -91,8 +87,10 @@ async function ToMsg() {
         fn && fn(msg);
 
         if (config.isFromOtherAccount) {
-            _.set(msg, "_isDev.isFromOtherAccount", config.isFromOtherAccount);
+            _.set(msg, '_isDev.isFromOtherAccount', config.isFromOtherAccount);
         }
+
+        _.set(msg, '$MobileQQ.key.input_files_kc', config.KEY);
 
         msgArr.push(msg);
     }
@@ -102,7 +100,7 @@ async function ToMsg() {
 }
 
 function getDirection(m) {
-    return m.senderuin == m.frienduin ? "come" : "go";
+    return m.senderuin == m.frienduin ? 'come' : 'go';
 }
 
 module.exports = ToMsg;
