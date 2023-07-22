@@ -190,6 +190,16 @@ async function addMatchJson(f, webDir, list, { md5, ext, url = '' }) {
     return res;
 }
 
+function getHasProtocolUrlArr(url) {
+    return url.startsWith('http') ? [url] : [`https://${url}`, `http://${url}`];
+}
+function linkAbsolutely(url, protocol = 'http') {
+    if (!url) return url;
+    return url.startsWith(protocol) ? url : `${protocol}://${url}`;
+}
+
 module.exports = {
     matchFile,
+    getHasProtocolUrlArr,
+    linkAbsolutely,
 };
