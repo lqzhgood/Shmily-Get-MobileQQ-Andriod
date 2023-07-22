@@ -213,6 +213,14 @@ async function typeMap(m) {
             };
         }
 
+        case -10000: {
+            return {
+                type: TYPE_DICT('消息'),
+                html: text(m, TYPE_DICT('_文本_自动回复'), merger),
+                merger,
+            };
+        }
+
         case 'TEST': {
             _test(m);
 

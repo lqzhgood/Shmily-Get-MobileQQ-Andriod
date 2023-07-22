@@ -1,4 +1,3 @@
-
 // 需要一一对应
 // https://github.com/lqzhgood/Shmily-Show
 // memoryweb\src\components\Msg\source\MobileQQ\os\Android\types.js
@@ -14,6 +13,8 @@ module.exports = {
             '_文本_未知动作', //
             '_文本_回复的消息', //
             '_文本_撤回', //
+            '_文本_对方尝试撤回', //
+            '_文本_自动回复', //
 
             '_混合图文', //
 

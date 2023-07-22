@@ -20,6 +20,7 @@ function text(m, type, merger) {
         case TYPE_DICT('_文本'):
         case TYPE_DICT('_文本_长文本'):
         case TYPE_DICT('_文本_对方尝试撤回'):
+        case TYPE_DICT('_文本_自动回复'):
             txt = plain(m, merger);
             break;
         case TYPE_DICT('_文本_回复的消息'):
