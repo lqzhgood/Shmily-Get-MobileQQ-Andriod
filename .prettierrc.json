@@ -1,0 +1,16 @@
+{
+    "arrowParens": "avoid",
+    "endOfLine": "auto",
+    "htmlWhitespaceSensitivity": "ignore",
+    "jsxSingleQuote": true,
+    "quoteProps": "consistent",
+    "singleQuote": true,
+    "tabWidth": 4,
+    "trailingComma": "all",
+    "printWidth": 120,
+    "prettier.useTabs": true,
+    "prettier.printWidth": 9999999,
+    "stylelintIntegration": true,
+    "eslintIntegration": true,
+    "alignObjectProperties": true
+}
