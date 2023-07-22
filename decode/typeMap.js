@@ -158,6 +158,14 @@ async function typeMap(m) {
             };
         }
 
+        case -2031: {
+            return {
+                type: TYPE_DICT('撤回'),
+                html: text(m, TYPE_DICT('_文本_对方尝试撤回'), merger),
+                merger,
+            };
+        }
+
         case -3008: {
             const { html } = file(m, TYPE_DICT('_文件_收到文件'), merger);
             return {
