@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 const dayjs = require('dayjs');
+const {KEY} = require('../config.js');
 
 function group(arr, key) {
     return arr.reduce((pre, cV) => {
@@ -46,14 +47,14 @@ function Log() {
         console.log('❌', ...this.toStr(v));
         throw new Error(...v);
     };
-    this.unknownType = function (m) {
+    this.unknownType = function (m,...o) {
         const UNKNOWN_TYPE_DIR = path.join(__dirname, '../dist/UNKNOWN_TYPE_PLEASE_ISSUES/');
         fs.mkdirpSync(UNKNOWN_TYPE_DIR);
         const file = path.join(
             UNKNOWN_TYPE_DIR,
             `${m.msgtype}-${Date.now()}-${Math.random().toString(36).substring(2)}.json`,
         );
-        fs.writeFileSync(file, JSON.stringify(m, null, 4));
+        fs.writeFileSync(file, JSON.stringify({KEY,m,o}, null, 4));
         console.log('\n');
         console.log(
             '❓',

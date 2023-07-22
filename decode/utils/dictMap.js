@@ -1,3 +1,8 @@
+
+// 需要一一对应
+// https://github.com/lqzhgood/Shmily-Show
+// memoryweb\src\components\Msg\source\MobileQQ\os\Android\types.js
+
 module.exports = {
     // _开头是内部处理类型
     TYPE_DICT(t) {
@@ -22,12 +27,14 @@ module.exports = {
 
             '位置', //
             '分享', //
+            '_分享_2011', // merger.type
+            '_分享_5008', // merger.type
 
             '系统消息', //
             '_系统消息_钱提醒', //
             '_系统消息_成为好友', //
             '_系统消息_好友_黑名单开关', //
-            '_系统消息_添加好友', // 自己加  别人同意
+            '_系统消息_添加好友', // merger.type 自己加  别人同意
 
             '视频', //
 

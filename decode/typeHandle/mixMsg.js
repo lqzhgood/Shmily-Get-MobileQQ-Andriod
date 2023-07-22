@@ -62,8 +62,8 @@ async function mixMsg(m, merger) {
         }
     }
 
+    merger.type = TYPE_DICT('_混合消息'); // 此标识符会标记此条消息特殊处理
     merger.data = {
-        type: TYPE_DICT('_混合消息'), // 此标识符会标记此条消息特殊处理
         hasPic,
         mixArr,
     };

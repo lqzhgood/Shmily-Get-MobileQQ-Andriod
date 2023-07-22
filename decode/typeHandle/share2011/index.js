@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 const _ = require('lodash');
+const { TYPE_DICT } = require('../../utils/dictMap.js');
 const { Log } = require('@/utils/index');
 const { decryptProtoBuf } = require('../../decryption/index.js');
 const { imageCloudUrl } = require('../image/extend.js');
@@ -19,7 +20,7 @@ async function share(m, merger) {
     merger.key = {};
     merger.data = {};
 
-    merger.type = `share-2011`;
+    merger.type = TYPE_DICT('_分享_2011');
 
     const buff = decryptProtoBuf(m.msgData.data);
 
@@ -33,7 +34,7 @@ async function share(m, merger) {
         // Person sender = multiMsgFriendMap.getOrDefault(this.msgseq, friendMap).getOrDefault(senderuin, new Person(senderuin, senderuin));
 
         merger.res.msgData = decodeStr;
-        Log.unknownType(m);
+        Log.unknownType(m, merger);
 
         merger.data = {};
 

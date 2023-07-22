@@ -21,7 +21,7 @@ const image = require('./typeHandle/image/index.js');
 const mixMsg = require('./typeHandle/mixMsg.js');
 const file = require('./typeHandle/file.js');
 const voip = require('./typeHandle/voip.js');
-const share5008 = require('./typeHandle/share5008.js');
+const share5008 = require('./typeHandle/share5008/index.js');
 const share2011 = require('./typeHandle/share2011/index.js');
 const video = require('./typeHandle/video.js');
 const audio = require('./typeHandle/audio.js');
@@ -216,8 +216,8 @@ async function typeMap(m) {
         }
 
         default: {
-            Log.unknownType(m);
             const test = _test(m);
+            Log.unknownType(m, test);
             return {
                 type: TYPE_DICT('未知'),
                 html: '[未知类型]',
