@@ -3,8 +3,8 @@ const { ddString } = require('../../utils/ddData');
 const { TYPE_DICT } = require('../../utils/dictMap.js');
 
 const Card_map = require('./app/map/index.js');
-// const Card_multimsg = require('./app/multimsg/index.js');
 const Card_structmsg = require('./app/structmsg/index.js');
+const Card_multimsg = require('./app/multimsg/index.js');
 const Card_qzone_albumInvite = require('./app/qzone_albumInvite/index.js');
 
 // 分享的 卡片消息
@@ -40,10 +40,10 @@ async function shareCardType(m, merger) {
             const o = await Card_qzone_albumInvite(m, merger);
             return o;
         }
-        // case 'com.tencent.multimsg': {
-        // const o = await Card_multimsg(m, merger);
-        // return o;
-        // }
+        case 'com.tencent.multimsg': {
+            const o = await Card_multimsg(m, merger);
+            return o;
+        }
     }
 
     // 未匹配到的会到这，全部打上未知的标记
