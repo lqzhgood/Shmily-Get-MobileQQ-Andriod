@@ -7,12 +7,12 @@ function handler(m, merger) {
 
     const metaData = meta.detail;
     merger.data = metaData;
+    merger.type = TYPE_DICT('_分享_5008');
 
     const body = metaData.news
         .map(v => {
-            const h = replaceQQEmoji(v.text);
-            v.$text = h;
-            return h;
+            v.$html = replaceQQEmoji(v.text);
+            return v.$html;
         })
         .join('<br/>');
 

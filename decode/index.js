@@ -16,7 +16,7 @@ async function ToMsg() {
     let rawMsgArr = _rawMsgArr;
 
     // debug
-    // rawMsgArr = _rawMsgArr.filter(v => v.uniseq == '6664559375272572184');
+    // rawMsgArr = _rawMsgArr.filter(v => [1683792639].includes(v.time));
     // rawMsgArr = _rawMsgArr.filter(v => [-2011].includes(v.msgtype));
 
     bar.start(rawMsgArr.length - 1, 0);

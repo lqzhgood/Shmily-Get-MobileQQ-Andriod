@@ -18,7 +18,11 @@ function zero(len) {
 }
 
 function hexArrToStr(hexArr, s, e) {
-    return hexArr.slice(s, s + e).toString('utf-8');
+    if (e === undefined) {
+        return hexArr.toString('utf-8');
+    } else {
+        return hexArr.slice(s, s + e).toString('utf-8');
+    }
 }
 
 function Cut(id) {

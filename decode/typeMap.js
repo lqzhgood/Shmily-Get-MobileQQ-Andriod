@@ -131,12 +131,12 @@ async function typeMap(m) {
             };
         }
         case -2011: {
-            const { html } = await share2011(m, merger);
+            const { type, html } = await share2011(m, merger);
             // 这里样本数据不够, 解码方法大概率不完备 可能导致死循环
             // 如果死循环可用下面注释的代码替换
             // const html = '';
             return {
-                type: TYPE_DICT('分享'),
+                type,
                 html,
                 merger,
             };
