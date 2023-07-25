@@ -62,7 +62,7 @@
 
 -   修改 `config.js`
 -   `npm run exportTable` 导出数据库
-    > 产物是 `.\dist\table\*.json` 本次所有数据库中用到的数据
+    > 产物是 `.\dist\_temp\table\*.json` 本次所有数据库中用到的数据
 -   `npm run md5assets` 生成资源 MD5, 用来辅助资源解密
 -   解压缩 `decode\decryption\javaSerialization\emoticon2007\jdk-18.0.2.1.zip`
     -   确保 `decode\decryption\javaSerialization\emoticon2007\jdk-18.0.2.1\bin\java.exe`
