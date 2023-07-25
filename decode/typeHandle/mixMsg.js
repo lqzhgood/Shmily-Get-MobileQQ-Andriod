@@ -57,7 +57,11 @@ async function mixMsg(m, merger) {
                 break;
             }
             default:
-                Log.errAndThrow('mixMsg unknown type', m);
+                Log.unknownType(m, merger);
+                mixArr.push({
+                    type: TYPE_DICT('_文本'),
+                    html: '未知类型数据，未解密',
+                });
                 break;
         }
     }
