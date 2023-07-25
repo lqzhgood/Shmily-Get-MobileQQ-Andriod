@@ -27,6 +27,8 @@ const video = require('./typeHandle/video.js');
 const audio = require('./typeHandle/audio.js');
 const emoticon = require('./typeHandle/emoticon/index.js');
 const addFriend = require('./typeHandle/addFriend.js');
+const unknown_7010 = require('./typeHandle/unknown_7010/index.js');
+const unknown_8018 = require('./typeHandle/unknown_8018/index.js');
 
 const _test = require('./typeHandle/_test.js');
 
@@ -203,6 +205,7 @@ async function typeMap(m) {
                 merger,
             };
         }
+
         case -7012: {
             const { html } = await addFriend(m, merger);
 
@@ -234,14 +237,29 @@ async function typeMap(m) {
         default: {
             const test = _test(m);
             Log.unknownType(m, test);
-            return {
+            const o = {
                 type: TYPE_DICT('未知'),
                 html: '[未知类型]',
+
                 merger: {
                     test,
                     ...merger,
                 },
             };
+
+            if (msgtype == -7010) {
+                const { html } = unknown_7010(m, merger);
+                o.html = html;
+            }
+
+            if (msgtype == -8018) {
+                // TYPE应该归类到 消息 但是没完全解密之前还是归类到未知吧
+                // 解密完还需要考虑 Show 的表情统计
+                const { html } = unknown_8018(m, merger);
+                o.html = html;
+            }
+
+            return o;
         }
     }
 }
