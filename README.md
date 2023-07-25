@@ -130,7 +130,7 @@ https://github.com/tsuzcx/qq_apk
 
 
 // 本项目支持类型详见
-// https://github.com/lqzhgood/Shmily-Get-MobileQQ-Andriod/blob/main/decode/typeMap.js
+// /decode/typeMap.js
 
 ```
 
