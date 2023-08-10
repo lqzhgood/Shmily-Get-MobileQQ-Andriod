@@ -26,6 +26,7 @@
         "npm": ">=8.6.0"
     },
     "dependencies": {
+        "7zip-min": "^1.4.4",
         "axios": "^0.27.2",
         "better-sqlite3": "^7.5.3",
         "chardet": "^1.4.0",

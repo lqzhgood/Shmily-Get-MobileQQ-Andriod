@@ -5,6 +5,7 @@ const FileType = require('file-type');
 const chardet = require('chardet');
 const iconv = require('iconv-lite');
 const _ = require('lodash');
+const _7z = require('7zip-min');
 
 const { DIST_DIR } = require('../config.js');
 
@@ -145,6 +146,18 @@ class WriteStack {
     }
 }
 
+function un7z(p, p_bz2) {
+    return new Promise((res, rej) => {
+        _7z.unpack(p, p_bz2, err => {
+            if (err) {
+                rej(err);
+            } else {
+                res(1);
+            }
+        });
+    });
+}
+
 module.exports = {
     EXT_VIDEO,
     EXT_IMAGE,
@@ -156,4 +169,5 @@ module.exports = {
     strToUtf8,
     clearTmp,
     WriteStack: new WriteStack(),
+    un7z,
 };

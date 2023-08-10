@@ -16,7 +16,6 @@ function ddString(m, p = 'msgData.data') {
 
 function ddProtoBuf(m, p = 'msgData.data', protoDecoder) {
     const buff = decryptProtoBuf(_.get(m, p));
-
     const obj = protoBufDecode[protoDecoder].decode(buff);
 
     return obj;
