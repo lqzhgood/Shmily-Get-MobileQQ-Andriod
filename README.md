@@ -64,8 +64,7 @@
 -   `npm run exportTable` 导出数据库
     > 产物是 `.\dist\_temp\table\*.json` 本次所有数据库中用到的数据
 -   `npm run md5assets` 生成资源 MD5, 用来辅助资源解密
--   解压缩 `decode\decryption\javaSerialization\emoticon2007\jdk-18.0.2.1.zip`
-    -   确保 `decode\decryption\javaSerialization\emoticon2007\jdk-18.0.2.1\bin\java.exe`
+
 -   `npm run build` 解密并生成数据
 
     如果程序长时间(>10min)进度条无变化, 可能有以下原因
@@ -75,12 +74,11 @@
         -   可以去 `utils\net.js` 设置 axiosDown 的 timeout，使每次下载若超过 timeout 则放弃
     -   `share2011` 解码失败, 可以去 `decode\typeMap.js` 中注释掉相应代码 (吐槽 ` java.io.Serializable` 用 js 硬解太难搞了, 还是建议用原生 `java` 去做解密吧)
 
-    
 -   [可选] 若和 QQ-PC 数据同时使用, 可通过 [Shmily-Get-QQ-PC_utils](https://github.com/lqzhgood/Shmily-Get-QQ-PC_utils) 去重
 
 ### Msg 格式
 
-详见 [Shmily文档](http://lqzhgood.github.io/Shmily) __数据格式__ 章节
+详见 [Shmily 文档](http://lqzhgood.github.io/Shmily) **数据格式** 章节
 
 #### 说明
 
@@ -90,6 +88,19 @@ QQ 内部的 Map 表为二维的形式
     -   \u0011 第 11 个表情
 -   \u0015 ??
 -   \u0016 某种标识 多出现于字符串最前面（file、voip）
+
+#### 工具
+
+##### 批量导出
+
+1. 执行完 `npm run build ` 之前的步骤
+    - 可以在 `.\dist\_temp\table\friends.json` 查看到所有好友信息
+        - uin 是 QQ 号码 | remark 是昵称（备注）
+    - `.\tools\makeAll.js` 的 `EXCLUDE_LIST` 添加需要排除的 uin 或 remark
+2. 修改 `config`
+    - 将 `leftNum` 设置为 `MAKE_ALL_REPLACE_TEMPLATE_LEFT_NUM`
+    - 将 `rootPath` 设置为 `MAKE_ALL_REPLACE_TEMPLATE_ROOT_PATH`
+3. 执行 `npm run makeAll`
 
 ### QQ 源码
 
@@ -124,7 +135,7 @@ https://github.com/tsuzcx/qq_apk
 //  "-5012" x   x       x
 //  "-5018" x   x       x
 //  "-5040" x   x
-//  "-7012" x    
+//  "-7012" x
 
 // x- 部分支持
 

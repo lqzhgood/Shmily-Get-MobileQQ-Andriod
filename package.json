@@ -9,7 +9,8 @@
         "dev": "cross-env NODE_ENV=development nodemon --inspect index.js",
         "build": "cross-env NODE_ENV=production node index.js",
         "md5assets": "node ./tools/assetsFileMd5.js",
-        "exportTable": "node ./tools/exportTable.js"
+        "exportTable": "node ./tools/exportTable.js",
+        "makeAll": "node ./tools/makeAll.js"
     },
     "keywords": [],
     "author": "lqzh",
