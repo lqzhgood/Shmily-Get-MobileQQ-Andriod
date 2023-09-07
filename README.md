@@ -80,7 +80,7 @@
 
 详见 [Shmily 文档](http://lqzhgood.github.io/Shmily) **数据格式** 章节
 
-#### 说明
+### 说明
 
 QQ 内部的 Map 表为二维的形式
 
@@ -89,9 +89,14 @@ QQ 内部的 Map 表为二维的形式
 -   \u0015 ??
 -   \u0016 某种标识 多出现于字符串最前面（file、voip）
 
-#### 工具
+### QQ 源码
 
-##### 批量导出
+https://github.com/tsuzcx/qq_apk
+
+
+## 工具
+
+### 批量导出
 
 1. 执行完 `npm run build ` 之前的步骤
     - 可以在 `.\dist\_temp\table\friends.json` 查看到所有好友信息
@@ -102,9 +107,6 @@ QQ 内部的 Map 表为二维的形式
     - 将 `rootPath` 设置为 `MAKE_ALL_REPLACE_TEMPLATE_ROOT_PATH`
 3. 执行 `npm run makeAll`
 
-### QQ 源码
-
-https://github.com/tsuzcx/qq_apk
 
 ## 解密进度
 
