@@ -22,16 +22,18 @@ const { DIST_DIR, DIST_DIR_TEMP, DIST_DIR_TEMP_IMG_DECODE, rootPath } = require(
 
     fillQQName();
 
-    // IMG DECODE PRE HANDLER
-    fs.mkdirpSync(DIST_DIR_TEMP_IMG_DECODE);
-    await un7z(
-        './decode/decryption/RichMsgDecode/out/artifacts/RichMsgDecode_jar/jre-1.8.7z',
-        path.join(DIST_DIR_TEMP_IMG_DECODE, 'jre-1.8'),
-    );
-    fs.copyFileSync(
-        './decode/decryption/RichMsgDecode/out/artifacts/RichMsgDecode_jar/RichMsgDecode.exe',
-        path.join(DIST_DIR_TEMP_IMG_DECODE, 'RichMsgDecode.exe'),
-    );
+    if (!fs.existsSync(path.join(DIST_DIR_TEMP_IMG_DECODE, 'RichMsgDecode.exe'))){
+        // IMG DECODE PRE HANDLER
+        fs.mkdirpSync(DIST_DIR_TEMP_IMG_DECODE);
+        await un7z(
+            './decode/decryption/RichMsgDecode/out/artifacts/RichMsgDecode_jar/jre-1.8.7z',
+            path.join(DIST_DIR_TEMP_IMG_DECODE, 'jre-1.8'),
+        );
+        fs.copyFileSync(
+            './decode/decryption/RichMsgDecode/out/artifacts/RichMsgDecode_jar/RichMsgDecode.exe',
+            path.join(DIST_DIR_TEMP_IMG_DECODE, 'RichMsgDecode.exe'),
+        );
+    }
 
     const ToMsg = require('./decode/index');
     const msgArr = await ToMsg();
