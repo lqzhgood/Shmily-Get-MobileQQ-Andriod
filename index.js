@@ -22,7 +22,7 @@ const { DIST_DIR, DIST_DIR_TEMP, DIST_DIR_TEMP_IMG_DECODE, rootPath } = require(
 
     fillQQName();
 
-    if (!fs.existsSync(path.join(DIST_DIR_TEMP_IMG_DECODE, 'RichMsgDecode.exe'))){
+    if (!fs.existsSync(path.join(DIST_DIR_TEMP_IMG_DECODE, 'RichMsgDecode.exe'))) {
         // IMG DECODE PRE HANDLER
         fs.mkdirpSync(DIST_DIR_TEMP_IMG_DECODE);
         await un7z(
@@ -32,6 +32,17 @@ const { DIST_DIR, DIST_DIR_TEMP, DIST_DIR_TEMP_IMG_DECODE, rootPath } = require(
         fs.copyFileSync(
             './decode/decryption/RichMsgDecode/out/artifacts/RichMsgDecode_jar/RichMsgDecode.exe',
             path.join(DIST_DIR_TEMP_IMG_DECODE, 'RichMsgDecode.exe'),
+        );
+    }
+
+    if (
+        !fs.existsSync(
+            path.join(__dirname, './decode/decryption/javaSerialization/emoticon2007/jdk-18.0.2.1/bin/java.exe'),
+        )
+    ) {
+        await un7z(
+            './decode/decryption/javaSerialization/emoticon2007/jdk-18.0.2.1.7z.001',
+            './decode/decryption/javaSerialization/emoticon2007/',
         );
     }
 
