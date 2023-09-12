@@ -18,53 +18,96 @@ async function handler(m, merger) {
     const o = JSON.parse(ddString(m, 'msgData.data'));
     merger.res.msgData = o;
 
+    // type O = {
+    //    field_baseprofile: { age: number, gender: 1 |2 , place: string, addfrd_src: '帐号查找'| 'QQ群-ABC' | ?? },
+    //     field_personal_labels: string[],
+    //     key_ask_anonymously?:{
+    //         key_question_time:number,
+    //         key_question_str:string,
+    //         key_answer_str:string,
+    //     }
+    //     field_qzone?: {
+    //         img_urls: string[]
+    //     }
+    // }
+
     const nicePics = [];
+    const qZonePics = [];
 
-    for (let i = 0; i < o.field_nicepics.length; i++) {
-        const p = o.field_nicepics[i];
+    let html = `<div>`;
 
-        const { ori, medium, ...otherUrl } = p;
+    html += `<h3>系统消息-添加好友</h3>
+            <h4>基本信息</h4>
+            <ul>
+                <li>年龄：${o.field_baseprofile.age}</li>
+                <li>性别：${genderMap(o.field_baseprofile.gender)}</li>
+                <li>地点：${o.field_baseprofile.place}</li>
+                <li>来源：${o.field_baseprofile.addfrd_src}</li>
+            </ul>`;
 
-        const urls = [ori, medium, ...Object.values(otherUrl)];
+    html += `<h4>个人标签</h4>
+             <ul>
+                ${o.field_personal_labels.map(v => `<li>${v}</li>`).join('')}
+            </ul>`;
 
-        const match = await matchFile(WEB_DIR, FILE_DIR, urls, m);
+    if (o.field_nicepics) {
+        for (let i = 0; i < o.field_nicepics.length; i++) {
+            const p = o.field_nicepics[i];
 
-        if (match) {
-            const { webUrl } = match;
-            nicePics.push(webUrl);
-        } else {
-            nicePics.push(urls[0]);
+            const { ori, medium, ...otherUrl } = p;
+
+            const urls = [ori, medium, ...Object.values(otherUrl)];
+
+            const match = await matchFile(WEB_DIR, FILE_DIR, urls, m);
+
+            if (match) {
+                const { webUrl } = match;
+                nicePics.push(webUrl);
+            } else {
+                nicePics.push(urls[0]);
+            }
         }
+
+        html +=
+            `<h4>精选照片</h4>` + nicePics.map(v => `<div><img src="${v}" alt='[图]' title='[图]' /></div>`).join('');
     }
 
+    if (o.field_qzone) {
+        for (let i = 0; i < o.field_qzone.img_urls.length; i++) {
+            const url = o.field_qzone.img_urls[i];
+            const urls = [url];
+
+            const match = await matchFile(WEB_DIR, FILE_DIR, urls, m);
+
+            if (match) {
+                const { webUrl } = match;
+                qZonePics.push(webUrl);
+            } else {
+                qZonePics.push(urls[0]);
+            }
+        }
+
+        html +=
+            `<h4>空间照片</h4>` + qZonePics.map(v => `<div><img src="${v}" alt='[图]' title='[图]' /></div>`).join('');
+    }
+
+    if (o.key_ask_anonymously) {
+        html += `<h4>好友匿名提问</h4>
+        <div>${dayjs(o.key_ask_anonymously.key_question_time * 1000).format('YYYY-MM-DD HH:mm:ss')}</div>
+        <div>问：${o.key_ask_anonymously.key_question_str}</div>
+        <div>答：${o.key_ask_anonymously.key_answer_str}</div>`;
+    }
+
+    html += `</div>`;
     merger.data = {
         type: TYPE_DICT('_系统消息_添加好友'),
         ...o,
         field_nicepics: nicePics,
+        field_qzone: qZonePics,
     };
 
     return {
-        html:
-            `<div>` +
-            `<h3>系统消息-添加好友</h3>` +
-            `<h4>基本信息</h4>` +
-            `<ul>` +
-            `<li>年龄：${o.field_baseprofile.age}</li>` +
-            `<li>性别：${genderMap(o.field_baseprofile.gender)}</li>` +
-            `<li>地点：${o.field_baseprofile.place}</li>` +
-            `<li>来源：${o.field_baseprofile.addfrd_src}</li>` +
-            `</ul>` +
-            `<h4>个人标签</h4>` +
-            `<ul>` +
-            o.field_personal_labels.map(v => `<li>${v}</li>`).join('') +
-            `</ul>` +
-            `<h4>精选照片</h4>` +
-            nicePics.map(v => `<div><img src="${v}" alt='[图]' title='[图]' /></div>`) +
-            `<h4>好友匿名提问</h4>` +
-            `<div>${dayjs(o.key_ask_anonymously.key_question_time * 1000).format('YYYY-MM-DD HH:mm:ss')}</div>` +
-            `<div>问：${o.key_ask_anonymously.key_question_str}</div>` +
-            `<div>答：${o.key_ask_anonymously.key_answer_str}</div>` +
-            `</div>`,
+        html,
     };
 }
 
@@ -72,7 +115,7 @@ function genderMap(g) {
     switch (g) {
         case 1:
             return '男';
-        case 0: // 未测试
+        case 2:
             return '女';
         default:
             return `未知-${g}`;
@@ -132,4 +175,14 @@ const tp = {
     versionCode: 3,
     vipBubbleID: 0,
     mExJsonObject: null,
+};
+
+const tp2 = {
+    msgData: {
+        field_baseprofile: { age: 102, gender: 2, place: '广州', addfrd_src: '帐号查找' },
+        field_personal_labels: ['1个共同好友', '狮子座', '二次元', '明日方舟', '刀客塔'],
+        field_qzone: {
+            img_urls: ['http://1.com', 'http://2.com', 'http://3.com'],
+        },
+    },
 };
