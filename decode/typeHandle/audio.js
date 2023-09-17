@@ -32,70 +32,75 @@ async function audio(m, merger) {
         time: voiceLength,
     };
 
-    const match = await matchFile(WEB_DIR, FILE_DIR, [md5, directUrl], m);
+    // 匹配方式及优先级
+    // 1. 匹配目录中的文件 -> 原始带日期的文件名  c2c_20220812112
+    // 2.1 匹配 MD5 -> MD5文件名
+    // 2.2 远程漫游的语音文件
 
-    if (match) {
-        merger.key.match = match;
-        const { webUrl } = match;
+    // 没有匹配到 md5 就直接看看文件在不在
+    let relative;
+    // /storage/emulated/0/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/*******/ptt/c2c_20220812112
 
-        // 这里可能是 md5 匹配到的 slk 文件 和 服务器上的 arm / mp3 文件
-        // mp3 直接赋值，其他格式需要转码，统统丢给 slkToMp3 处理。
-        const { base, ext, name } = path.parse(webUrl);
-        if (ext.toLowerCase() === '.mp3') {
-            o.mp3Url = webUrl;
-        } else {
-            const targetFile = path.join(FILE_DIR, base);
-            await slkToMp3(targetFile, FILE_DIR, name);
-            o.mp3Url = `${WEB_DIR}/${name}.mp3`;
+    if (localPath.split('/ptt/')[1]) {
+        relative = localPath.split('/ptt/')[1];
+    } else if (fullLocalPath.split('/ptt/')[1]) {
+        relative = fullLocalPath.split('/ptt/')[1];
+    }
+
+    if (relative) {
+        const { dir, name } = path.parse(relative);
+        const sourceDir = path.join(INPUT_DIR, dir);
+
+        let sFiles = [];
+
+        if (fs.existsSync(sourceDir)) {
+            sFiles = fs
+                .readdirSync(sourceDir)
+                .filter(v => v.startsWith(name))
+                .map(f => ({
+                    f,
+                    f_p: path.join(sourceDir, f),
+                }));
         }
+
+        if (sFiles.length === 0) {
+            // 如果相应目录没有,则从资源文件夹找
+            sFiles = ASSET_FILE.filter(v => v.f.startsWith(name));
+        }
+
+        // 如果上面能找到匹配 则处理
+        if (sFiles.length > 0) {
+            // arm 优先
+            sFiles.sort((a, b) => {
+                return path.parse(a.f).ext.toLowerCase() === '.arm' ? -1 : 1;
+            });
+
+            const sourceFile = sFiles[0].f_p;
+            const targetDir = path.join(FILE_DIR, dir);
+            fs.mkdirpSync(targetDir);
+            const targetFile = path.join(targetDir, path.parse(sourceFile).base);
+            fs.copyFileSync(sourceFile, targetFile);
+            await slkToMp3(targetFile, targetDir, name);
+            o.mp3Url = `${WEB_DIR}/${dir}/${name}.mp3`;
+        }
+        merger.key.files = sFiles;
     } else {
-        // 没有匹配到 md5 就直接看看文件在不在
-        let relative;
-        // /storage/emulated/0/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/*******/ptt/c2c_20220812112
+        const match = await matchFile(WEB_DIR, FILE_DIR, [md5, directUrl], m);
 
-        if (localPath.split('/ptt/')[1]) {
-            relative = localPath.split('/ptt/')[1];
-        } else if (fullLocalPath.split('/ptt/')[1]) {
-            relative = fullLocalPath.split('/ptt/')[1];
-        }
+        if (match) {
+            merger.key.match = match;
+            const { webUrl } = match;
 
-        if (relative) {
-            const { dir, name } = path.parse(relative);
-            const sourceDir = path.join(INPUT_DIR, dir);
-
-            let sFiles = [];
-
-            if (fs.existsSync(sourceDir)) {
-                sFiles = fs
-                    .readdirSync(sourceDir)
-                    .filter(v => v.startsWith(name))
-                    .map(f => ({
-                        f,
-                        f_p: path.join(sourceDir, f),
-                    }));
+            // 这里可能是 md5 匹配到的 slk 文件 和 服务器上的 arm / mp3 文件
+            // mp3 直接赋值，其他格式需要转码，统统丢给 slkToMp3 处理。
+            const { base, ext, name } = path.parse(webUrl);
+            if (ext.toLowerCase() === '.mp3') {
+                o.mp3Url = webUrl;
+            } else {
+                const targetFile = path.join(FILE_DIR, base);
+                await slkToMp3(targetFile, FILE_DIR, name);
+                o.mp3Url = `${WEB_DIR}/${name}.mp3`;
             }
-
-            if (sFiles.length === 0) {
-                // 如果相应目录没有,则从资源文件夹找
-                sFiles = ASSET_FILE.filter(v => v.f.startsWith(name));
-            }
-
-            // 如果上面能找到匹配 则处理
-            if (sFiles.length > 0) {
-                // arm 优先
-                sFiles.sort((a, b) => {
-                    return path.parse(a.f).ext.toLowerCase() === '.arm' ? -1 : 1;
-                });
-
-                const sourceFile = sFiles[0].f_p;
-                const targetDir = path.join(FILE_DIR, dir);
-                fs.mkdirpSync(targetDir);
-                const targetFile = path.join(targetDir, path.parse(sourceFile).base);
-                fs.copyFileSync(sourceFile, targetFile);
-                await slkToMp3(targetFile, targetDir, name);
-                o.mp3Url = `${WEB_DIR}/${dir}/${name}.mp3`;
-            }
-            merger.key.files = sFiles;
         }
     }
 
