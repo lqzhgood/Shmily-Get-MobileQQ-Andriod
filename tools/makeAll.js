@@ -13,7 +13,7 @@ fs.copyFileSync(path.join(__dirname, '../config.js'), path.join(__dirname, `../c
 const EXCLUDE_LIST = ['10000', '系统消息'];
 
 for (let i = 0; i < FRIEND_LIST.length; i++) {
-    const { uin, remark ，groupid} = FRIEND_LIST[i];
+    const { uin, remark, groupid} = FRIEND_LIST[i];
 
     // groupid = -1 的意思应该是现在不在好友列表中，但是原来在
     // 详细参考 https://github.com/lqzhgood/Shmily-Get-MobileQQ-Andriod/issues/15
