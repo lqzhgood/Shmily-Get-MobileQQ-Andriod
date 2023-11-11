@@ -18,7 +18,7 @@
                 -   /data/data/com.tencent.mobileqq/databases/
             -   Tim
                 -   /data/data/com.tencent.tim/databases/
-        -   秘钥 `input\data\files\kc` <-- 这是个文件
+        -   密钥 `input\data\files\kc` <-- 这是个文件
             -   QQ
                 -   /data/data/com.tencent.mobileqq/files/kc
             -   Tim
