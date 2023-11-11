@@ -1,27 +1,24 @@
-const path = require("path");
-const fs = require("fs-extra");
-const _ = require("lodash");
-const { ddProtoBuf } = require("../utils/ddData");
-const { Log } = require("@/utils/index");
-const { EXT_VIDEO, EXT_IMAGE, copyFile } = require("@/utils/file");
+const path = require('path');
+const fs = require('fs-extra');
+const _ = require('lodash');
+const { ddProtoBuf } = require('../utils/ddData');
+const { Log } = require('@/utils/index');
+const { EXT_VIDEO, EXT_IMAGE, copyFile } = require('@/utils/file');
 
-const {
-    ASSETS_ROOT_DIR,
-    FILE_WEB_PUBLIC_DIR,
-    FILE_DIR_OUT_DIR,
-    DIST_DIR_TEMP,
-} = require("@/config.js");
+const { ASSETS_ROOT_DIR, FILE_WEB_PUBLIC_DIR, FILE_DIR_OUT_DIR, DIST_DIR_TEMP } = require('@/config.js');
 
-const ASSET_FILE = require(path.join(DIST_DIR_TEMP, "ASSET_FILE.json"));
+const ASSET_FILE = require(path.join(DIST_DIR_TEMP, 'ASSET_FILE.json'));
 
-const { matchFile } = require("../utils/matchFile");
+const { matchFile } = require('../utils/matchFile');
 
-const DIR_TYPE = "video";
+const DIR_TYPE = 'video';
 const FILE_DIR = path.join(FILE_DIR_OUT_DIR, DIR_TYPE);
 fs.mkdirpSync(FILE_DIR);
 const WEB_DIR = `${FILE_WEB_PUBLIC_DIR}/${DIR_TYPE}`;
 
-const INPUT_DIR = path.join(ASSETS_ROOT_DIR, "video");
+const INPUT_DIR = path.join(ASSETS_ROOT_DIR, 'video');
+
+if (!fs.existsSync(INPUT_DIR)) fs.mkdirpSync(INPUT_DIR);
 
 const VIDEO_DIR_MD5 = fs.readdirSync(INPUT_DIR);
 
@@ -29,11 +26,11 @@ async function video(m, merger) {
     merger.data = {};
 
     const o = {
-        videoLocalUrl: "",
-        videoCoverUrl: "", // 前端有使用作为找不到的视频封面的图片 但是QQ本身没有这张图
+        videoLocalUrl: '',
+        videoCoverUrl: '', // 前端有使用作为找不到的视频封面的图片 但是QQ本身没有这张图
     };
 
-    merger.res.msgData = ddProtoBuf(m, "msgData.data", "ShortVideo");
+    merger.res.msgData = ddProtoBuf(m, 'msgData.data', 'ShortVideo');
     const { fileSize, localPath } = merger.res.msgData;
 
     // /storage/emulated/0/Tencent/MobileQQ/shortvideo/B45296345682EE81D65AC3C47A4C5EEB/${fileName}
@@ -48,9 +45,7 @@ async function video(m, merger) {
     // 还有这样文件名的
     // ${md5}${m.selfuin or m.senderuin}${m.uniseq}${很多数字}.mp4
     if (!md5s) {
-        const reg = new RegExp(
-            `(?<=\\/)([a-f\\d]{32}|[A-F\\d]{32})(${m.selfuin}|${m.senderuin})(\\d{1,})\\.mp4$`
-        );
+        const reg = new RegExp(`(?<=\\/)([a-f\\d]{32}|[A-F\\d]{32})(${m.selfuin}|${m.senderuin})(\\d{1,})\\.mp4$`);
         const res = localPath.match(reg);
         if (res) {
             md5s = res[1];
@@ -63,38 +58,22 @@ async function video(m, merger) {
 
         if (md5s.length !== 1) Log.warn(`video md5s.length!==1: ${md5s}`);
 
-        const md5Dir = VIDEO_DIR_MD5.find((d) =>
-            md5s.map((md5) => md5.toLowerCase()).includes(d.toLowerCase())
-        );
+        const md5Dir = VIDEO_DIR_MD5.find(d => md5s.map(md5 => md5.toLowerCase()).includes(d.toLowerCase()));
 
         if (md5Dir) {
             const currDir = path.join(INPUT_DIR, md5Dir);
-            const files = fs
-                .readdirSync(currDir)
-                .filter((v) => v !== ".nomedia");
+            const files = fs.readdirSync(currDir).filter(v => v !== '.nomedia');
 
             // 视频文件 默认只有一个视频
-            const videoF = files.find((f) =>
-                EXT_VIDEO.includes(path.extname(f).toLowerCase())
-            );
+            const videoF = files.find(f => EXT_VIDEO.includes(path.extname(f).toLowerCase()));
             if (videoF) {
-                const fileBase = await copyFile(
-                    path.join(currDir, videoF),
-                    FILE_DIR,
-                    md5Dir
-                );
+                const fileBase = await copyFile(path.join(currDir, videoF), FILE_DIR, md5Dir);
                 o.videoLocalUrl = `${WEB_DIR}/${fileBase}`;
             }
             // 不存在,瞎折腾的视频封面 默认只有一张图片
-            const imgF = files.find((f) =>
-                EXT_IMAGE.includes(path.extname(f).toLowerCase())
-            );
+            const imgF = files.find(f => EXT_IMAGE.includes(path.extname(f).toLowerCase()));
             if (imgF) {
-                const fileBase = await copyFile(
-                    path.join(currDir, imgF),
-                    FILE_DIR,
-                    md5Dir
-                );
+                const fileBase = await copyFile(path.join(currDir, imgF), FILE_DIR, md5Dir);
                 o.videoCoverUrl = `${WEB_DIR}/${fileBase}`;
             }
         }
@@ -114,7 +93,7 @@ async function video(m, merger) {
     // md5 匹配不上就用文件名匹配
     if (!o.videoLocalUrl) {
         const fileName = path.parse(localPath).base;
-        const find = ASSET_FILE.find((v) => v.f === fileName);
+        const find = ASSET_FILE.find(v => v.f === fileName);
 
         if (find) {
             const { f, f_p } = find;
@@ -131,7 +110,7 @@ async function video(m, merger) {
     // 再匹配不上就用 uniseq 匹配, 文件名有 QQ号${uniseq}.mp4 的格式
     if (!o.videoLocalUrl && m.uniseq) {
         const fileName = `${m.uniseq}.mp4`;
-        const find = ASSET_FILE.find((v) => v.f.includes(fileName));
+        const find = ASSET_FILE.find(v => v.f.includes(fileName));
 
         if (find) {
             const { f, f_p } = find;
