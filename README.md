@@ -4,12 +4,18 @@
 
 此工具是将 Android QQ/Tim 导出并转换为 `Shmily-Msg` 格式的工具
 
-### 使用
 
--   安装 node 环境 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/nodejs.html]
--   安装 python 环境 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/python.html]
-    -   python 3.7.2
--   复制文件到目录
+## 使用
+
+> [!NOTE]
+> Windows Only <br />
+> 因为有使用到 Python C 等其他语言环境 <br />
+> 为了减少依赖, 编译为 `exe` 捆绑在代码中  <br />
+
+ 
+1. 🎞️ 安装 node 环境 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/nodejs.html]
+3. 🏞️ 下载本项目并解压 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/github-down-repo.html]
+2. 复制文件到目录
     <details>
 
     -   数据库
@@ -76,24 +82,6 @@
 
 -   [可选] 若和 QQ-PC 数据同时使用, 可通过 [Shmily-Get-QQ-PC_utils](https://github.com/lqzhgood/Shmily-Get-QQ-PC_utils) 去重
 
-### Msg 格式
-
-详见 [Shmily 文档](http://lqzhgood.github.io/Shmily) **数据格式** 章节
-
-### 说明
-
-QQ 内部的 Map 表为二维的形式
-
--   \u00014 表情组
-    -   \u0011 第 11 个表情
--   \u0015 ??
--   \u0016 某种标识 多出现于字符串最前面（file、voip）
-
-### QQ 源码
-
-https://github.com/tsuzcx/qq_apk
-
-
 ## 工具
 
 ### 批量导出
@@ -106,6 +94,26 @@ https://github.com/tsuzcx/qq_apk
     - 将 `leftNum` 设置为 `MAKE_ALL_REPLACE_TEMPLATE_LEFT_NUM`
     - 将 `rootPath` 设置为 `MAKE_ALL_REPLACE_TEMPLATE_ROOT_PATH`
 3. 执行 `npm run makeAll`
+
+
+## 开发
+
+### 消息特殊结构
+
+QQ 消息中 表情/标识 等是使用 Map 表以二维的形式 传递/存储. 详见 `lib\qqEmoji\`
+
+> 例如  你好呀 \u00014\u0011  -> 你好呀 [QQ经典-菜刀]
+
+-   \u00014 表情组
+    -   \u0011 第 11 个表情
+-   \u0015 ??
+-   \u0016 某种标识 多出现于字符串最前面（file、voip）
+
+### 源码
+
+https://github.com/tsuzcx/qq_apk
+
+
 
 
 ## 解密进度
