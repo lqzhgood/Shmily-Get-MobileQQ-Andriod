@@ -129,6 +129,10 @@ https://github.com/tsuzcx/qq_apk
 
 ## 解密进度
 
+所有支持的类型详见 [dictMap.js](./decode/utils/dictMap.js)
+
+`msgtype` 详见 [typeMap.js](./decode/typeMap.js)
+
 ```
 // 2023/07/21
 
@@ -158,12 +162,7 @@ https://github.com/tsuzcx/qq_apk
 //  "-5040" x   x
 //  "-7012" x
 
-// x- 部分支持
-
-
-// 本项目支持类型详见
-// /decode/typeMap.js
-
+// x- 部分支持 
 ```
 
 ## 感谢
