@@ -1,11 +1,11 @@
-const fs = require("fs-extra");
-const path = require("path");
-const { spawnSync } = require("child_process");
-const { DIST_DIR_TEMP } = require("@/config.js");
-const { IMG_DIR, INPUT_DIR_IMAGE, WEB_DIR, FILE_DIR } = require("./const.js");
-const { getByExtend } = require("./extend");
+const fs = require('fs-extra');
+const path = require('path');
+const { spawnSync } = require('child_process');
+const { DIST_DIR_TEMP } = require('@/config.js');
+const { IMG_DIR, INPUT_DIR_IMAGE, WEB_DIR, FILE_DIR } = require('./const.js');
+const { getByExtend } = require('./extend');
 
-const { giveExt } = require("@/utils/file");
+const { giveExt } = require('@/utils/file');
 
 // F_MD5 代表文件本身的 MD5
 // FN_CRC 代表文件名中的 CRC
@@ -31,7 +31,7 @@ const { giveExt } = require("@/utils/file");
 
 const LOST_IMAGE = [];
 const IMG_FILE_DETAIL = fs.readJsonSync(
-    path.join(DIST_DIR_TEMP, "IMG_FILE_DETAIL.json")
+    path.join(DIST_DIR_TEMP, 'IMG_FILE_DETAIL.json')
 );
 
 async function imgDataHandle(data, imgCrcFiles, m, merger) {
@@ -74,7 +74,7 @@ async function imgDataHandle(data, imgCrcFiles, m, merger) {
         // Log.err('LOST IMAGE', md5, m);
         LOST_IMAGE.push(m);
         fs.writeFileSync(
-            path.join(DIST_DIR_TEMP, "LOST_IMAGE.json"),
+            path.join(DIST_DIR_TEMP, 'LOST_IMAGE.json'),
             JSON.stringify(LOST_IMAGE, null, 4)
         );
     }
@@ -89,30 +89,34 @@ async function imgDataHandle(data, imgCrcFiles, m, merger) {
  * @return {*} string
  */
 function imageCrc64(str) {
-    const pyPath = path.join(__dirname, "./crc64.py");
-    if (!fs.existsSync(pyPath)) throw new Error("crc64.py not found");
-    let CRC64Value = spawnSync("python", [pyPath, str])
-        .stdout.toString("utf-8")
-        .trim();
+    // python 源码执行 需要 python 环境
+    // const pyPath = path.join(__dirname, './crc64.py');
+    // if (!fs.existsSync(pyPath)) throw new Error('crc64.py not found');
+    // let CRC64Value = spawnSync('python', [pyPath, str]).stdout.toString('utf-8').trim();
 
-    const hasHyphen = CRC64Value.startsWith("-");
+    // exe 执行, 需要 Windows 环境
+    const exePath = path.join(__dirname, './crc64.exe');
+    if (!fs.existsSync(exePath)) throw new Error('crc64.exe not found');
+    let CRC64Value = spawnSync(exePath, [str]).stdout.toString('utf-8').trim();
+
+    const hasHyphen = CRC64Value.startsWith('-');
 
     // 删除 0x 标记
     CRC64Value = hasHyphen
-        ? CRC64Value.replace(/^-0x/, "")
-        : CRC64Value.replace(/^0x/, "");
+        ? CRC64Value.replace(/^-0x/, '')
+        : CRC64Value.replace(/^0x/, '');
 
-    if (CRC64Value.length % 2 !== 0) CRC64Value = "0" + CRC64Value;
-    CRC64Value = Buffer.from(CRC64Value, "hex").toString("hex");
-    CRC64Value = CRC64Value.replace(/^0/, "");
+    if (CRC64Value.length % 2 !== 0) CRC64Value = '0' + CRC64Value;
+    CRC64Value = Buffer.from(CRC64Value, 'hex').toString('hex');
+    CRC64Value = CRC64Value.replace(/^0/, '');
     if (hasHyphen) {
-        CRC64Value = "-" + CRC64Value;
+        CRC64Value = '-' + CRC64Value;
     }
     return CRC64Value;
 }
 
 function calcImgCrcDirArr(md5) {
-    return IMG_DIR.map((d) => ({ crc: imageCrc64(`${d}:${md5}`), d }));
+    return IMG_DIR.map(d => ({ crc: imageCrc64(`${d}:${md5}`), d }));
 }
 
 module.exports = {
