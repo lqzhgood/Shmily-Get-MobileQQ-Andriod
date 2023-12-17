@@ -13,7 +13,8 @@
 
 1. 🎞️ 安装 node 环境 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/nodejs.html]
 2. 🏞️ 下载本项目并解压 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/github-down-repo.html]
-3. 按说明将 手机QQ 相关文件复制到 `input` 目录 (Git 不允许上传空目录, 没有就自己新建)
+3. 🎞️ 安装依赖 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/nodejs-dependencies.html]
+4. 按说明将 手机QQ 相关文件复制到 `input` 目录 (Git 不允许上传空目录, 没有就自己新建)
     <details>
 
     ```
@@ -61,7 +62,7 @@
 
     </details>
 
-4. 修改 `config.js`
+5. 修改 `config.js`
    ```js
     rightNum: '110', //  我自己的QQ 展示在右边
     rightName: '', // 留空将从数据库中获取
