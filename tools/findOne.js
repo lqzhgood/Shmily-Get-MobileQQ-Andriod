@@ -1,5 +1,7 @@
 const j = require('../dist/_temp/table/message.json');
 
-const n = 1;
+const args = process.argv.slice(2);
 
-console.log('json', j[n], j.length - 1);
+const n = parseInt(args[0].trim(), 10);
+
+console.log(JSON.stringify(j[n], null, 4));
