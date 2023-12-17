@@ -13,7 +13,7 @@
 
 1. 🎞️ 安装 node 环境 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/nodejs.html]
 2. 🏞️ 下载本项目并解压 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/github-down-repo.html]
-3. 按说明将 手机QQ 相关文件复制到 `input` 目录
+3. 按说明将 手机QQ 相关文件复制到 `input` 目录 (Git 不允许上传空目录, 没有就自己新建)
     <details>
 
     ```
