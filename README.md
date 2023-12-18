@@ -17,8 +17,10 @@
 ```
 2. 🏞️ 下载本项目并解压 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/github-down-repo.html]
 3. 🎞️ 安装依赖 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/nodejs-dependencies.html]
-4. 按说明将 手机QQ 相关文件复制到 `input` 目录 (Git 不允许上传空目录, 没有就自己新建) [如何复制?](http://lqzhgood.github.io/Shmily/guide/setup-runtime/Android-copy.html)
+4. 按说明将 手机QQ 相关文件复制到 `input` 目录 (Git 不允许上传空目录, 没有就自己新建) 
     <details>
+
+    [如何从手机复制到电脑?](http://lqzhgood.github.io/Shmily/guide/setup-runtime/Android-copy.html)
 
     ```
     // input 文件夹结构
