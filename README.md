@@ -17,7 +17,7 @@
 ```
 2. 🏞️ 下载本项目并解压 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/github-down-repo.html]
 3. 🎞️ 安装依赖 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/nodejs-dependencies.html]
-4. 按说明将 手机QQ 相关文件复制到 `input` 目录 (Git 不允许上传空目录, 没有就自己新建)
+4. 按说明将 手机QQ 相关文件复制到 `input` 目录 (Git 不允许上传空目录, 没有就自己新建) [如何复制?](http://lqzhgood.github.io/Shmily/guide/setup-runtime/Android-copy.html)
     <details>
 
     ```
@@ -65,7 +65,7 @@
 
     </details>
 
-5. 修改 `config.js`
+6. 修改 `config.js`
    ```js
     rightNum: '110', //  我自己的QQ 展示在右边
     rightName: '', // 留空将从数据库中获取
@@ -78,10 +78,10 @@
     // 建议按以下规则修改
     rootPath: 'MobileQQ-Android-123456-20230101',
    ```
-6. `npm run exportTable` 导出数据库
+7. `npm run exportTable` 导出数据库
    > 产物是 `.\dist\_temp\table\*.json` 本次所有数据库中用到的数据
-7. `npm run md5assets` 生成资源 MD5, 用来辅助资源解密
-8. `npm run build` 解密并生成数据 
+8. `npm run md5assets` 生成资源 MD5, 用来辅助资源解密
+9. `npm run build` 解密并生成数据 
    > 如果程序长时间(>10min)进度条无变化, 可能有以下原因
    > 
    > - 下载资源时间过长，大部分原因是 CDN 的资源已经没有了，需要回源拿，导致第一次下载时间过长，有以下两种办法
@@ -90,8 +90,8 @@
    > - `share2011` 解码失败
    >   - 可以去 `decode\typeMap.js` 中按说明注释掉相应代码 (吐槽 `java.io.Serializable` 用 `js` 硬解太难搞了, 还是建议用原生 `java` 去做解密吧)
 
-9. [可选] 若和 QQ-PC 数据同时使用, 可通过 [Shmily-Get-QQ-PC_utils](https://github.com/lqzhgood/Shmily-Get-QQ-PC_utils) 去重
-10. 完成
+10. [可选] 若和 QQ-PC 数据同时使用, 可通过 [Shmily-Get-QQ-PC_utils](https://github.com/lqzhgood/Shmily-Get-QQ-PC_utils) 去重
+11. 完成
 ```
                            是  ---> Get   http://lqzhgood.github.io/Shmily/guide/use/get.html
                           /  
