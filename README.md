@@ -12,6 +12,9 @@
 > 为了减少依赖, 编译为 `exe` 捆绑在代码中 <br />
 
 1. 🎞️ 安装 node 环境 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/nodejs.html]
+```diff
++ 🎞️ 2-10   -->   https://www.bilibili.com/video/BV1P94y1P7hs/
+```
 2. 🏞️ 下载本项目并解压 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/github-down-repo.html]
 3. 🎞️ 安装依赖 [http://lqzhgood.github.io/Shmily/guide/setup-runtime/nodejs-dependencies.html]
 4. 按说明将 手机QQ 相关文件复制到 `input` 目录 (Git 不允许上传空目录, 没有就自己新建)
@@ -98,6 +101,9 @@
 ```
 
 ## 工具
+
+### 获取第 n 条消息
+命令行执行 `node .\tools\findOne.js {n}`
 
 ### 批量导出
 
