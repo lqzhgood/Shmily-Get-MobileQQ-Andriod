@@ -4,6 +4,8 @@
 
 此工具是将 Android QQ/Tim 导出并转换为 `Shmily-Msg` 格式的工具
 
+> 开发使用的版本: QQ/8.8.88 Tim/3.5.2
+
 ## 使用
 
 > [!NOTE]
