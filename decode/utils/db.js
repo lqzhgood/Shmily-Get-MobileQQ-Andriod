@@ -5,10 +5,10 @@ BigInt.prototype.toJSON = function () {
         : this.toString();
 };
 
-const fs = require("fs-extra");
-const path = require("path");
-const Database = require("better-sqlite3");
-const { rightNum, DB_DIR, DIST_DIR_TEMP } = require("../../config");
+const fs = require('fs-extra');
+const path = require('path');
+const Database = require('better-sqlite3');
+const { rightNum, DB_DIR, DIST_DIR_TEMP } = require('../../config');
 
 function conn(DB_FILE) {
     const db = new Database(DB_FILE, { readonly: true });
@@ -25,11 +25,11 @@ function conn(DB_FILE) {
     return db;
 }
 
-const mainDB = conn(path.join(DB_DIR, rightNum + ".db"));
-const slowDB = conn(path.join(DB_DIR, "slowtable_" + rightNum + ".db"));
+const mainDB = conn(path.join(DB_DIR, rightNum + '.db'));
+const slowDB = conn(path.join(DB_DIR, 'slowtable_' + rightNum + '.db'));
 
 async function exportTable(db, f) {
-    const out = path.join(DIST_DIR_TEMP, "table");
+    const out = path.join(DIST_DIR_TEMP, 'table');
     fs.mkdirpSync(out);
     const json = await db();
     fs.writeFileSync(
@@ -38,8 +38,34 @@ async function exportTable(db, f) {
     );
 }
 
+function getTableName(db) {
+    return db
+        .prepare(`SELECT name FROM sqlite_master WHERE type='table';`)
+        .all()
+        .map(v => v.name)
+        .sort();
+}
+
+function exportTableName() {
+    const out = path.join(DIST_DIR_TEMP, 'table');
+
+    const resM = getTableName(mainDB);
+    fs.writeFileSync(
+        path.join(out, `./tables-main.json`),
+        JSON.stringify(resM, null, 4)
+    );
+
+    const resS = getTableName(slowDB);
+    fs.writeFileSync(
+        path.join(out, `./tables-slow.json`),
+        JSON.stringify(resS, null, 4)
+    );
+}
+
 module.exports = {
     mainDB,
     slowDB,
     exportTable,
+    getTableName,
+    exportTableName,
 };

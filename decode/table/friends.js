@@ -1,4 +1,4 @@
-const { mainDB } = require('../utils/db');
+const { mainDB, getTableName } = require('../utils/db');
 const { decryptCharByKeyInCollection } = require('../decryption');
 const { group } = require('../../utils/index');
 
@@ -10,7 +10,12 @@ const { group } = require('../../utils/index');
 async function friends() {
     const json = await mainDB.jsonPromise('Friends');
 
-    decryptCharByKeyInCollection(json, ['uin', 'name', 'remark', 'mCompareSpell']);
+    decryptCharByKeyInCollection(json, [
+        'uin',
+        'name',
+        'remark',
+        'mCompareSpell',
+    ]);
 
     json.forEach(p => {
         if (!p.remark) p.remark = p.name;
@@ -25,12 +30,18 @@ async function friends() {
  * @return {*}
  */
 async function friendMulti() {
-    const json = await mainDB.jsonPromise('MultiMsgNick');
+    const tables = getTableName(mainDB);
+    const table = 'MultiMsgNick';
 
-    decryptCharByKeyInCollection(json, ['uin', 'nick']);
-    const q = group(json, 'uniseq');
-
-    return q;
+    // 有案例不存在
+    if (tables.includes(table)) {
+        const json = await mainDB.jsonPromise('MultiMsgNick');
+        decryptCharByKeyInCollection(json, ['uin', 'nick']);
+        const q = group(json, 'uniseq');
+        return q;
+    } else {
+        return [];
+    }
 }
 
 module.exports = { friends, friendMulti };
