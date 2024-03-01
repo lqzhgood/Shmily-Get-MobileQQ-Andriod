@@ -1,15 +1,15 @@
 // @ts-check
 
 const crc64_table = Array.from({ length: 256 }, () => 0n);
-for (let i = 0n; i < crc64_table.length; i += 1n) {
-    let bf = i;
+for (let i = 0; i < crc64_table.length; i += 1) {
+    let bf = BigInt(i);
     for (let j = 0; j < 8; j++) {
         if ((bf & 1n) != 0n) {
             bf = (bf >> 1n) ^ -7661587058870466123n;
         } else {
             bf >>= 1n;
         }
-        crc64_table[Number(i)] = bf;
+        crc64_table[i] = bf;
     }
 }
 
@@ -24,7 +24,14 @@ const crc64 = input => {
     return v.toString(16);
 };
 
-// Expected: `79e215c8f13ee1e7`
-// console.log(crc64('chatimg:73C393EEE6BA2A917FADD8F675985B8C'));
-
 module.exports = { crc64 };
+
+/** Only for test. If it comes out with error, just remove it */
+if (process.env.TEST) {
+    const assert = require('node:assert');
+    /** Only for test. If it comes out with error, just remove it */
+    assert.strictEqual(
+        crc64('chatimg:73C393EEE6BA2A917FADD8F675985B8C'),
+        '79e215c8f13ee1e7'
+    );
+}
