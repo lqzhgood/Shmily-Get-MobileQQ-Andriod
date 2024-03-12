@@ -24,14 +24,4 @@ const crc64 = input => {
     return v.toString(16);
 };
 
-module.exports = { crc64 };
-
-/** Only for test. If it comes out with error, just remove it */
-if (process.env.TEST) {
-    const assert = require('node:assert');
-    /** Only for test. If it comes out with error, just remove it */
-    assert.strictEqual(
-        crc64('chatimg:73C393EEE6BA2A917FADD8F675985B8C'),
-        '79e215c8f13ee1e7'
-    );
-}
+module.exports = { decodeByJs: crc64 };

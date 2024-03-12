@@ -4,13 +4,13 @@
     "description": "QQ-Mobile-Andriod-Export",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
         "t": "cross-env NODE_ENV=development nodemon --inspect t.js",
         "dev": "cross-env NODE_ENV=development nodemon --inspect index.js",
         "build": "cross-env NODE_ENV=production node index.js",
         "md5assets": "node ./tools/assetsFileMd5.js",
         "exportTable": "node ./tools/exportTable.js",
-        "makeAll": "node ./tools/makeAll.js"
+        "makeAll": "node ./tools/makeAll.js",
+        "test": "jest"
     },
     "keywords": [],
     "author": "lqzh",
@@ -45,5 +45,8 @@
     },
     "_moduleAliases": {
         "@": "."
+    },
+    "devDependencies": {
+        "jest": "^29.7.0"
     }
 }
