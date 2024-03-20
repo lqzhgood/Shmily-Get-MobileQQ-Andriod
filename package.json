@@ -10,7 +10,7 @@
         "md5assets": "node ./tools/assetsFileMd5.js",
         "exportTable": "node ./tools/exportTable.js",
         "makeAll": "node ./tools/makeAll.js",
-        "test": "jest"
+        "test": "node --test"
     },
     "keywords": [],
     "author": "lqzh",
@@ -29,7 +29,7 @@
     "dependencies": {
         "7zip-min": "^1.4.4",
         "axios": "^0.27.2",
-        "better-sqlite3": "^7.5.3",
+        "better-sqlite3": "^9.4.3",
         "chardet": "^1.4.0",
         "cheerio": "^1.0.0-rc.11",
         "cli-progress": "^3.11.1",
@@ -45,8 +45,5 @@
     },
     "_moduleAliases": {
         "@": "."
-    },
-    "devDependencies": {
-        "jest": "^29.7.0"
     }
 }
