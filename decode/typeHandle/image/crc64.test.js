@@ -1,3 +1,5 @@
+const { describe, test } = require('node:test');
+const { deepStrictEqual } = require('node:assert');
 const { decodeByJs } = require('./crc64');
 const { decodeByPython } = require('./crc64.python');
 const testArr = require('./crc64.test.data.json');
@@ -8,7 +10,7 @@ describe('decode by js', () => {
         const { encryption, decryption } = o;
 
         test(`decode: ${encryption}`, () => {
-            expect(decodeByJs(encryption)).toBe(decryption);
+            deepStrictEqual(decodeByJs(encryption), decryption);
         });
     }
 });
@@ -23,13 +25,3 @@ describe('decode by js', () => {
 //         });
 //     }
 // });
-
-/** Only for test. If it comes out with error, just remove it */
-if (process.env.TEST) {
-    const assert = require('node:assert');
-    /** Only for test. If it comes out with error, just remove it */
-    assert.strictEqual(
-        crc64('chatimg:73C393EEE6BA2A917FADD8F675985B8C'),
-        '79e215c8f13ee1e7'
-    );
-}
