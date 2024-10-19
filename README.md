@@ -8,6 +8,9 @@
 
 ## 使用
 
+> [!WARNING]
+> 不支持 NT-QQ ( >= 8.9.63 ) <br /> 
+
 > [!NOTE]
 > Windows Only <br />
 > 因为有使用到 Python C 等其他语言环境 <br />
